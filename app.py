@@ -44,7 +44,7 @@ if st.button("Classify"):
     html_content = "".join([
         f'<span style="background-color: {color}; color: {text_color_from_bg(rgba)}; padding: 5px 10px; margin: 2px; border-radius: 5px; display: inline-block; min-width: 3em; text-align: center;">{word}</span>'
         for word, color, rgba in zip(words, colors_hex, colors)
-    ]
+    ])
 
 
     # Display the custom heatmap in Streamlit
