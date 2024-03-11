@@ -55,10 +55,7 @@ if st.button("Classify"):
 
     if classification_agreement == "No":
         reason_for_disagreement = st.text_area("Please provide your reason for disagreement:")
-        
-        #############################
-        ##### Saving User Input #####
-        #############################
+   
         # Saving data to CSV
         data = {
             'date': [datetime.now()],
