@@ -42,7 +42,8 @@ if st.button("Classify"):
     html_content = "".join([
         f'<span style="background-color: {color}; color: {text_color_from_bg(rgba)}; padding: 5px 10px; margin: 2px; border-radius: 5px; display: inline-block; min-width: 3em; text-align: center;">{word}</span>'
         for word, color, rgba in zip(words, colors_hex, colors)
-    ])
+    ]
+
 
     # Display the custom heatmap in Streamlit
     st.markdown(html_content, unsafe_allow_html=True)
@@ -50,26 +51,23 @@ if st.button("Classify"):
     # User feedback on classification result
     classification_agreement = st.selectbox("Do you agree with the classification?", ["Yes", "No"])
 
-    reason_for_disagreement = ""
     if classification_agreement == "No":
         reason_for_disagreement = st.text_area("Please provide your reason for disagreement:")
-
-
-#############################
-##### Saving User Input #####
-#############################
-
-# Saving data to CSV
-    data = {
-        'date': [datetime.now()],
-        'title': [article_title],
-        'body': [article_body],
-        'link': [source_link],
-        'classification_result': [classification],
-        'user_agreement': [classification_agreement],
-        'disagreement_reason': [reason_for_disagreement],
-    }
-    df = pd.DataFrame(data)
-    # Appending the data to 'data.csv', creating if doesn't exist
-    df.to_csv('data.csv', mode='a', header=not pd.read_csv('data.csv').empty, index=False)
+        
+        #############################
+        ##### Saving User Input #####
+        #############################
+        # Saving data to CSV
+        data = {
+            'date': [datetime.now()],
+            'title': [article_title],
+            'body': [article_body],
+            'link': [source_link],
+            'classification_result': [classification],
+            'user_agreement': [classification_agreement],
+            'disagreement_reason': [reason_for_disagreement if classification_agreement == "No" else ''],
+        }
+        df = pd.DataFrame(data)
+        # Append the data to 'data.csv', creating if doesn't exist
+        df.to_csv('data.csv', mode='a', header=not pd.read_csv('data.csv').empty, index=False)
 
