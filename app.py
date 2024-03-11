@@ -23,6 +23,12 @@ source_link = st.text_input('Enter the source link of the article:', '')
 # Numeric input for threshold
 threshold = st.number_input("Set the threshold for classification:", min_value=0.0, max_value=1.0, value=0.5)
 
+# Initialize session state for classification agreement and reason for disagreement
+if 'classification_agreement' not in st.session_state:
+    st.session_state['classification_agreement'] = None
+if 'reason_for_disagreement' not in st.session_state:
+    st.session_state['reason_for_disagreement'] = ''
+    
 if st.button("Classify"):
     classification, surprisal_values, words = random_generator.generate_surprisal_values(article_body, threshold)
     st.write(f"Classification: {classification}")
@@ -53,8 +59,14 @@ if st.button("Classify"):
     # User feedback on classification result
     classification_agreement = st.selectbox("Do you agree with the classification?", ["Yes", "No"])
 
-    if classification_agreement == "No":
+     # Update session state and check the state to display the text area
+    st.session_state['classification_agreement'] = classification_agreement
+    if st.session_state['classification_agreement'] == "No":
         reason_for_disagreement = st.text_area("Please provide your reason for disagreement:")
+        st.session_state['reason_for_disagreement'] = reason_for_disagreement
+    else:
+        reason_for_disagreement = ""
+        st.session_state['reason_for_disagreement'] = reason_for_disagreement
    
         # Saving data to CSV
         data = {
@@ -70,6 +82,7 @@ if st.button("Classify"):
         # Append the data to 'data.csv', creating if doesn't exist
         df.to_csv('data.csv', mode='a', header=not pd.read_csv('data.csv').empty, index=False)
 
+    
 
 if st.button("Save"):
     # Assuming 'data.csv' is already updated and ready to be pushed
