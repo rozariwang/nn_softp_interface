@@ -4,6 +4,8 @@ import numpy as np
 import matplotlib.cm as cm
 from datetime import datetime
 import random_generator
+import subprocess
+
 
 #########################
 #### Visual Elements ####
@@ -71,3 +73,22 @@ if st.button("Classify"):
         # Append the data to 'data.csv', creating if doesn't exist
         df.to_csv('data.csv', mode='a', header=not pd.read_csv('data.csv').empty, index=False)
 
+
+if st.button("Save"):
+    # Assuming 'data.csv' is already updated and ready to be pushed
+    try:
+        # Add the CSV file to the staging area
+        subprocess.run(["git", "add", "data.csv"], check=True)
+        
+        # Commit the changes
+        subprocess.run(["git", "commit", "-m", "Update data.csv"], check=True)
+        
+        # Push the changes
+        result = subprocess.run(["git", "push"], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        
+        if result.returncode == 0:
+            st.success("Changes saved and pushed to GitHub successfully!")
+        else:
+            st.error("Failed to push changes to GitHub.")
+    except subprocess.CalledProcessError as e:
+        st.error(f"An error occurred: {e}")
