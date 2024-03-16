@@ -95,9 +95,9 @@ if 'current_page' in st.session_state and st.session_state['current_page'] == "M
             'title': article_title,
             'body': article_body,
             'link': source_link,
-            'classification_result': classification,
-            'user_agreement': classification_agreement,
-            'disagreement_reason': reason_for_disagreement if classification_agreement == "No" else '',
+            'classification_result': st.session_state['classification_result'],
+            'user_agreement': st.session_state['user_agreement'],
+            'disagreement_reason': st.session_state['reason_for_disagreement'] if st.session_state['user_agreement'] == "No" else '',
         }
     
         # Specify your Google Sheet name here
