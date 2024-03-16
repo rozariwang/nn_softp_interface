@@ -58,13 +58,12 @@ if st.button("Classify"):
     st.markdown(html_content, unsafe_allow_html=True)
 
     # Define a key for the select box to easily access its value from st.session_state
-    classification_agreement = st.selectbox(
+    classification_agreement = st.radio(
         "Do you agree with the classification?",
-        ["Select", "Yes", "No"],
-        index=0,  # Default to 'Select'
+        ["Yes", "No"],
     )
 
-    # Immediately check if there is a disagreement and ask for a reason if there is
+    # Check the user's agreement and display the text area if there is disagreement
     if classification_agreement == "No":
         reason_for_disagreement = st.text_area("Please provide your reason for disagreement:")
         # Update session state only if needed, for example, to use in another part of the app
