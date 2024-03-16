@@ -110,7 +110,7 @@ if st.session_state['current_page'] == "Main Page":
         sheet_name = "Your Google Sheet Name"
     
         try:
-            append_data_to_google_sheet(data, sheet_name)
+            append_data_to_google_sheet(data, Fake News HQ)
             st.success("Data saved to Google Sheet successfully!")
         except Exception as e:
             st.error(f"Failed to save data to Google Sheet: {e}")
