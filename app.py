@@ -59,6 +59,12 @@ if st.button("Classify"):
     # User feedback on classification result
     classification_agreement = st.selectbox("Do you agree with the classification?", ["Yes", "No"])
 
+    if classification_agreement == "No":
+        reason_for_disagreement = st.text_area("Please provide your reason for disagreement:")
+        st.session_state['reason_for_disagreement'] = reason_for_disagreement
+    else:
+        st.session_state['reason_for_disagreement'] = ''
+
      # Update session state and check the state to display the text area
     st.session_state['classification_agreement'] = classification_agreement
     if st.session_state['classification_agreement'] == "No":
@@ -85,20 +91,16 @@ if st.button("Classify"):
     
 
 if st.button("Save"):
-    # Assuming 'data.csv' is already updated and ready to be pushed
+    # Make sure the CSV file path is correct and accessible
     try:
-        # Add the CSV file to the staging area
+        # Save your data to 'data.csv' before running these commands
         subprocess.run(["git", "add", "data.csv"], check=True)
-        
-        # Commit the changes
         subprocess.run(["git", "commit", "-m", "Update data.csv"], check=True)
-        
-        # Push the changes
-        result = subprocess.run(["git", "push"], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        result = subprocess.run(["git", "push"], check=True, capture_output=True)
         
         if result.returncode == 0:
             st.success("Changes saved and pushed to GitHub successfully!")
         else:
-            st.error("Failed to push changes to GitHub.")
+            st.error(f"Failed to push changes to GitHub. {result.stderr}")
     except subprocess.CalledProcessError as e:
         st.error(f"An error occurred: {e}")
