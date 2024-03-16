@@ -16,11 +16,13 @@ if 'current_page' not in st.session_state:
 def change_page(page_name):
     st.session_state['current_page'] = page_name
 
-# Function to initialize Google Sheets API connection
+# Load credentials from Streamlit secrets
+google_sheets_credentials = json.loads(st.secrets["google_sheets_credentials"])
+
 def init_google_sheets_connection():
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/spreadsheets",
              "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]
-    creds = ServiceAccountCredentials.from_json_keyfile_name("path/to/your/google-credentials.json", scope)
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(google_sheets_credentials, scope)
     client = gspread.authorize(creds)
     return client
 
