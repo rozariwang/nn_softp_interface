@@ -35,6 +35,11 @@ def append_data_to_google_sheet(data, sheet_name, worksheet_index=0):
     values_list = list(data.values())
     sheet.append_row(values_list)
 
+def text_color_from_bg(bg_color):
+    r, g, b, _ = bg_color
+    brightness = r * 0.299 + g * 0.587 + b * 0.114  # Approximate brightness perception
+    return "white" if brightness < 0.5 else "black"
+
 
 # Page navigation buttons
 st.sidebar.title("🚀 Navigation")
@@ -47,16 +52,11 @@ st.sidebar.button("Model Structure", on_click=change_page, args=("Model Structur
 #### Main Page       ####
 #########################
     
-if st.session_state['current_page'] == "Main Page":
-
+if 'current_page' in st.session_state and st.session_state['current_page'] == "Main Page":
     if 'classification_result' not in st.session_state:
         st.session_state['classification_result'] = ''
     if 'heatmap_html' not in st.session_state:
         st.session_state['heatmap_html'] = ''
-    if 'user_agreement' not in st.session_state:
-        st.session_state['user_agreement'] = None
-    if 'reason_for_disagreement' not in st.session_state:
-        st.session_state['reason_for_disagreement'] = ''
     
     st.title("🚩 News Classifier 🚩")
 
@@ -75,8 +75,8 @@ if st.session_state['current_page'] == "Main Page":
         colors = [cm.Reds(val) for val in normalized_vals]
         colors_hex = ["#{:02x}{:02x}{:02x}".format(int(r*255), int(g*255), int(b*255)) for r, g, b, _ in colors]
         heatmap_html = "".join([
-            f'<span style="background-color: {color}; color: {text_color_from_bg((r, g, b, _))}; padding: 5px 10px; margin: 2px; border-radius: 5px; display: inline-block; min-width: 3em; text-align: center;">{word}</span>'
-            for word, color, (r, g, b, _) in zip(words, colors_hex, colors)
+            f'<span style="background-color: {colors_hex[i]}; color: {text_color_from_bg(colors[i])}; padding: 5px 10px; margin: 2px; border-radius: 5px; display: inline-block; min-width: 3em; text-align: center;">{word}</span>'
+            for i, word in enumerate(words)
         ])
         st.session_state['heatmap_html'] = heatmap_html
 
