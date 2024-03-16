@@ -86,8 +86,8 @@ if 'current_page' in st.session_state and st.session_state['current_page'] == "M
         st.markdown(st.session_state['heatmap_html'], unsafe_allow_html=True)
 
      # Collect agreement and feedback
-    st.session_state['user_agreement'] = st.radio("Do you agree with the classification?", ["Yes", "No"], key='user_agreement')
-    st.session_state['reason_for_disagreement'] = st.text_area("Please provide your reason for disagreement:", key='reason_for_disagreement')
+    classification_agreement = st.radio("Do you agree with the classification?", ["Yes", "No"], key='user_agreement')
+    reason_for_disagreement = st.text_area("Please provide your reason for disagreement:", key='reason_for_disagreement')
 
     if st.button("Save"):
         data = {
