@@ -17,7 +17,7 @@ def change_page(page_name):
     st.session_state['current_page'] = page_name
 
 # Load credentials from Streamlit secrets
-google_sheets_credentials = json.loads(st.secrets["google_sheets_credentials"])
+google_sheets_credentials = st.secrets["google_sheets_credentials"]
 
 def init_google_sheets_connection():
     scope = [
