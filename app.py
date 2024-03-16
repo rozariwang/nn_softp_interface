@@ -46,7 +46,14 @@ st.sidebar.button("Model Structure", on_click=change_page, args=("Model Structur
 #########################
 #### Main Page       ####
 #########################
+    
 if st.session_state['current_page'] == "Main Page":
+
+    if 'classification_result' not in st.session_state:
+        st.session_state['classification_result'] = ''
+    if 'classification_details' not in st.session_state:
+        st.session_state['classification_details'] = ''
+    
     st.title("🚩 News Classifier 🚩")
 
     # Text input for the article title and body
@@ -59,17 +66,11 @@ if st.session_state['current_page'] == "Main Page":
     # Numeric input for threshold
     threshold = st.number_input("Set the threshold for classification:", min_value=0.0, max_value=1.0, value=0.5)
 
-    classification_agreement = st.radio(
-        "Do you agree with the classification?",
-        ["Yes", "No"],
-    )
-
-    # Feedback box
-    reason_for_disagreement = st.text_area("Please provide your reason for disagreement:")
+    
 
     if st.button("Classify"):
         classification, surprisal_values, words = random_generator.generate_surprisal_values(article_body, threshold)
-        st.write(f"Classification: {classification}")
+        st.session_state['classification_result'] = classification # Store the result in session state
 
 
         # Normalize surprisal values for color mapping
@@ -94,6 +95,17 @@ if st.session_state['current_page'] == "Main Page":
 
         # Display the custom heatmap in Streamlit
         st.markdown(html_content, unsafe_allow_html=True)
+
+        classification_agreement = st.radio(
+            "Do you agree with the classification?",
+            ["Yes", "No"],
+        )
+
+        # Feedback box
+        reason_for_disagreement = st.text_area("Please provide your reason for disagreement:")
+        
+    if st.session_state['classification_result']:
+        st.write(f"Classification: {st.session_state['classification_result']}")
 
 
     if st.button("Save"):
