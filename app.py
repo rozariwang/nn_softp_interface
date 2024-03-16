@@ -58,21 +58,19 @@ if st.button("Classify"):
     st.markdown(html_content, unsafe_allow_html=True)
 
     # Define a key for the select box to easily access its value from st.session_state
-    classification_agreement_key = "classification_agreement"
-
-    # User feedback on classification result
     classification_agreement = st.selectbox(
         "Do you agree with the classification?",
         ["Select", "Yes", "No"],
         index=0,  # Default to 'Select'
-        key=classification_agreement_key  # Use the defined key here
     )
 
     # Immediately check if there is a disagreement and ask for a reason if there is
-    if st.session_state[classification_agreement_key] == "No":
+    if classification_agreement == "No":
         reason_for_disagreement = st.text_area("Please provide your reason for disagreement:")
+        # Update session state only if needed, for example, to use in another part of the app
         st.session_state['reason_for_disagreement'] = reason_for_disagreement
-    elif st.session_state[classification_agreement_key] == "Yes":
+    elif classification_agreement == "Yes":
+        # Optionally reset the reason for disagreement in session state
         st.session_state['reason_for_disagreement'] = ''
    
         # Saving data to CSV
