@@ -57,19 +57,22 @@ if st.button("Classify"):
     # Display the custom heatmap in Streamlit
     st.markdown(html_content, unsafe_allow_html=True)
 
+    # Define a key for the select box to easily access its value from st.session_state
+    classification_agreement_key = "classification_agreement"
+
     # User feedback on classification result
     classification_agreement = st.selectbox(
         "Do you agree with the classification?",
         ["Select", "Yes", "No"],
         index=0,  # Default to 'Select'
-        on_change=lambda: st.session_state.update({'classification_agreement': classification_agreement})
+        key=classification_agreement_key  # Use the defined key here
     )
 
     # Immediately check if there is a disagreement and ask for a reason if there is
-    if st.session_state.get('classification_agreement') == "No":
+    if st.session_state[classification_agreement_key] == "No":
         reason_for_disagreement = st.text_area("Please provide your reason for disagreement:")
         st.session_state['reason_for_disagreement'] = reason_for_disagreement
-    elif st.session_state.get('classification_agreement') == "Yes":
+    elif st.session_state[classification_agreement_key] == "Yes":
         st.session_state['reason_for_disagreement'] = ''
    
         # Saving data to CSV
@@ -87,20 +90,23 @@ if st.button("Classify"):
         df.to_csv('data.csv', mode='a', header=not pd.read_csv('data.csv').empty, index=False)
 
     
+repo_path = '/the/correct/full/path/to/your/git/repository'  # Update this
 
 if st.button("Save"):
     try:
-        # Ensure the working directory is correct
-        os.chdir('/path/to/your/repository')  # Update this to your repository path
+        # Change to the repository directory
+        os.chdir(repo_path)
         
-        # Check for changes
-        status_result = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True)
-        if status_result.stdout.strip():  # If there's output, there are changes
-            subprocess.run(["git", "add", "data.csv"], check=True)
-            commit_result = subprocess.run(["git", "commit", "-m", "Update data.csv"], check=True, capture_output=True, text=True)
+        # Attempt to add, commit, and push changes
+        subprocess.run(["git", "add", "data.csv"], check=True)
+        commit_result = subprocess.run(["git", "commit", "-m", "Update data.csv"], capture_output=True, text=True)
+        
+        # Only attempt to push if the commit was successful
+        if commit_result.returncode == 0:
             push_result = subprocess.run(["git", "push"], check=True, capture_output=True, text=True)
             st.success("Changes saved and pushed to GitHub successfully!")
         else:
-            st.warning("No changes to commit.")
+            st.error(f"Failed to commit changes. {commit_result.stderr}")
+            
     except subprocess.CalledProcessError as e:
         st.error(f"An error occurred: {e}")
