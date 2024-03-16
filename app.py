@@ -20,17 +20,18 @@ def change_page(page_name):
 google_sheets_credentials = json.loads(st.secrets["google_sheets_credentials"])
 
 def init_google_sheets_connection():
-    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/spreadsheets",
-             "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]
+    scope = [
+        "https://www.googleapis.com/auth/spreadsheets",
+        "https://www.googleapis.com/auth/drive.file",
+        "https://www.googleapis.com/auth/drive"
+    ]
     creds = ServiceAccountCredentials.from_json_keyfile_dict(google_sheets_credentials, scope)
     client = gspread.authorize(creds)
     return client
 
-# Function to append data to the specified Google Sheet
 def append_data_to_google_sheet(data, sheet_name, worksheet_index=0):
     client = init_google_sheets_connection()
     sheet = client.open(sheet_name).get_worksheet(worksheet_index)
-    # Convert the data dictionary to a list of values and append to the Google Sheet
     values_list = list(data.values())
     sheet.append_row(values_list)
 
