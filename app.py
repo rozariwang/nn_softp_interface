@@ -54,7 +54,7 @@ if st.session_state['current_page'] == "Main Page":
     if 'heatmap_html' not in st.session_state:
         st.session_state['heatmap_html'] = ''
     if 'user_agreement' not in st.session_state:
-       st.session_state['user_agreement'] = None
+        st.session_state['user_agreement'] = None
     if 'reason_for_disagreement' not in st.session_state:
         st.session_state['reason_for_disagreement'] = ''
     
