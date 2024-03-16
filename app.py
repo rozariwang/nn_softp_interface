@@ -5,6 +5,7 @@ import matplotlib.cm as cm
 from datetime import datetime
 import random_generator
 import subprocess
+import os
 
 
 #########################
@@ -57,22 +58,19 @@ if st.button("Classify"):
     st.markdown(html_content, unsafe_allow_html=True)
 
     # User feedback on classification result
-    classification_agreement = st.selectbox("Do you agree with the classification?", ["Yes", "No"])
+    classification_agreement = st.selectbox(
+        "Do you agree with the classification?",
+        ["Select", "Yes", "No"],
+        index=0,  # Default to 'Select'
+        on_change=lambda: st.session_state.update({'classification_agreement': classification_agreement})
+    )
 
-    if classification_agreement == "No":
+    # Immediately check if there is a disagreement and ask for a reason if there is
+    if st.session_state.get('classification_agreement') == "No":
         reason_for_disagreement = st.text_area("Please provide your reason for disagreement:")
         st.session_state['reason_for_disagreement'] = reason_for_disagreement
-    else:
+    elif st.session_state.get('classification_agreement') == "Yes":
         st.session_state['reason_for_disagreement'] = ''
-
-     # Update session state and check the state to display the text area
-    st.session_state['classification_agreement'] = classification_agreement
-    if st.session_state['classification_agreement'] == "No":
-        reason_for_disagreement = st.text_area("Please provide your reason for disagreement:")
-        st.session_state['reason_for_disagreement'] = reason_for_disagreement
-    else:
-        reason_for_disagreement = ""
-        st.session_state['reason_for_disagreement'] = reason_for_disagreement
    
         # Saving data to CSV
         data = {
@@ -91,16 +89,18 @@ if st.button("Classify"):
     
 
 if st.button("Save"):
-    # Make sure the CSV file path is correct and accessible
     try:
-        # Save your data to 'data.csv' before running these commands
-        subprocess.run(["git", "add", "data.csv"], check=True)
-        subprocess.run(["git", "commit", "-m", "Update data.csv"], check=True)
-        result = subprocess.run(["git", "push"], check=True, capture_output=True)
+        # Ensure the working directory is correct
+        os.chdir('/path/to/your/repository')  # Update this to your repository path
         
-        if result.returncode == 0:
+        # Check for changes
+        status_result = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True)
+        if status_result.stdout.strip():  # If there's output, there are changes
+            subprocess.run(["git", "add", "data.csv"], check=True)
+            commit_result = subprocess.run(["git", "commit", "-m", "Update data.csv"], check=True, capture_output=True, text=True)
+            push_result = subprocess.run(["git", "push"], check=True, capture_output=True, text=True)
             st.success("Changes saved and pushed to GitHub successfully!")
         else:
-            st.error(f"Failed to push changes to GitHub. {result.stderr}")
+            st.warning("No changes to commit.")
     except subprocess.CalledProcessError as e:
         st.error(f"An error occurred: {e}")
