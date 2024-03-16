@@ -110,24 +110,24 @@ if st.session_state['current_page'] == "Main Page":
     
    repo_path = '/the/correct/full/path/to/your/git/repository'  # Update this
 
-if st.button("Save"):
-    try:
-        # Change to the repository directory
-        os.chdir(repo_path)
+   if st.button("Save"):
+       try:
+           # Change to the repository directory
+           os.chdir(repo_path)
         
-        # Attempt to add, commit, and push changes
-        subprocess.run(["git", "add", "data.csv"], check=True)
-        commit_result = subprocess.run(["git", "commit", "-m", "Update data.csv"], capture_output=True, text=True)
+           # Attempt to add, commit, and push changes
+           subprocess.run(["git", "add", "data.csv"], check=True)
+           commit_result = subprocess.run(["git", "commit", "-m", "Update data.csv"], capture_output=True, text=True)
         
-        # Only attempt to push if the commit was successful
-        if commit_result.returncode == 0:
-            push_result = subprocess.run(["git", "push"], check=True, capture_output=True, text=True)
-            st.success("Changes saved and pushed to GitHub successfully!")
-        else:
-            st.error(f"Failed to commit changes. {commit_result.stderr}")
+           # Only attempt to push if the commit was successful
+           if commit_result.returncode == 0:
+               push_result = subprocess.run(["git", "push"], check=True, capture_output=True, text=True)
+               st.success("Changes saved and pushed to GitHub successfully!")
+           else:
+               st.error(f"Failed to commit changes. {commit_result.stderr}")
             
-    except subprocess.CalledProcessError as e:
-        st.error(f"An error occurred: {e}")
+       except subprocess.CalledProcessError as e:
+           st.error(f"An error occurred: {e}")
         
 
 #########################
