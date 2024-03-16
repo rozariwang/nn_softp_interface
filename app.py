@@ -7,12 +7,18 @@ import random_generator
 import subprocess
 import os
 
+# Page Configuration
+st.set_page_config(page_title="News Classifier App", layout="wide")
+
+# Sidebar for navigation
+st.sidebar.title("Navigation")
+page = st.sidebar.radio("Go to", ["Main Page", "Fact-Checking Links", "Dataset", "Model Structure"])
 
 #########################
-#### Visual Elements ####
+#### Main Page       ####
 #########################
-
-st.title("News Classifier with Surprisal Values")
+if page == "Main Page":
+    st.title("News Classifier with Surprisal Values")
 
 # Text input for the article title and body
 article_title = st.text_area("Article Title:", "Enter the article title here...")
@@ -115,3 +121,42 @@ if st.button("Save"):
             
     except subprocess.CalledProcessError as e:
         st.error(f"An error occurred: {e}")
+
+#########################
+#### Fact-Checking   ####
+#########################
+elif page == "Fact-Checking Links":
+    st.title("Fact-Checking Links")
+
+    # Embedding or linking to fact-checking websites
+    # You can list the links here using st.markdown() for hyperlinks
+
+#########################
+#### Dataset         ####
+#########################
+elif page == "Dataset":
+    st.title("Dataset View")
+
+    # Integrate with Awesome Table or simply display your dataset using Streamlit
+    # For Awesome Table, you'll likely need to embed or link to it since direct integration
+    # within Streamlit isn't straightforward without custom components.
+
+#########################
+#### Model Structure ####
+#########################
+elif page == "Model Structure":
+    st.title("Model Structure and Design")
+
+    # Describe or visualize your model's structure and design
+    # You could use diagrams, code snippets, or textual descriptions
+
+# Example of conditional logic within the 'Main Page' section, trimmed for brevity
+if page == "Main Page":
+    if st.button("Classify"):
+        # Classification logic and feedback collection (trimmed for brevity)
+        pass
+
+    # Example of saving data, adjusted to trigger only in the "Main Page" section
+    if st.button("Save"):
+        # Save logic (trimmed for brevity)
+        pass
