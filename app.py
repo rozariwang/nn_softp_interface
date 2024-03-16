@@ -51,62 +51,43 @@ if st.session_state['current_page'] == "Main Page":
 
     if 'classification_result' not in st.session_state:
         st.session_state['classification_result'] = ''
-    if 'classification_details' not in st.session_state:
-        st.session_state['classification_details'] = ''
+    if 'heatmap_html' not in st.session_state:
+        st.session_state['heatmap_html'] = ''
+    if 'user_agreement' not in st.session_state:
+       st.session_state['user_agreement'] = None
+    if 'reason_for_disagreement' not in st.session_state:
+        st.session_state['reason_for_disagreement'] = ''
     
     st.title("🚩 News Classifier 🚩")
 
-    # Text input for the article title and body
+    # Text input
     article_title = st.text_area("Article Title:", "Enter the article title here...")
     article_body = st.text_area("Article Body:", "Enter the article body here...")
-
-    # Input for source link
     source_link = st.text_input('Enter the source link of the article:', '')
-
-    # Numeric input for threshold
     threshold = st.number_input("Set the threshold for classification:", min_value=0.0, max_value=1.0, value=0.5)
 
-    
 
     if st.button("Classify"):
         classification, surprisal_values, words = random_generator.generate_surprisal_values(article_body, threshold)
         st.session_state['classification_result'] = classification # Store the result in session state
 
-
-        # Normalize surprisal values for color mapping
         normalized_vals = np.interp(surprisal_values, (min(surprisal_values), max(surprisal_values)), (0, 1))
-        colors = [cm.Reds(val) for val in normalized_vals]  # Change colormap to Reds
-
-        # Function to determine text color based on background color
-        def text_color_from_bg(bg_color):
-            r, g, b, _ = bg_color
-            brightness = r * 0.299 + g * 0.587 + b * 0.114  # Approximate brightness perception
-            return "white" if brightness < 0.5 else "black"
-
-        # Convert RGBA colors to HEX for HTML
+        colors = [cm.Reds(val) for val in normalized_vals]
         colors_hex = ["#{:02x}{:02x}{:02x}".format(int(r*255), int(g*255), int(b*255)) for r, g, b, _ in colors]
-
-        # Generate HTML content with styled spans for each word
-        html_content = "".join([
-            f'<span style="background-color: {color}; color: {text_color_from_bg(rgba)}; padding: 5px 10px; margin: 2px; border-radius: 5px; display: inline-block; min-width: 3em; text-align: center;">{word}</span>'
-            for word, color, rgba in zip(words, colors_hex, colors)
+        heatmap_html = "".join([
+            f'<span style="background-color: {color}; color: {text_color_from_bg((r, g, b, _))}; padding: 5px 10px; margin: 2px; border-radius: 5px; display: inline-block; min-width: 3em; text-align: center;">{word}</span>'
+            for word, color, (r, g, b, _) in zip(words, colors_hex, colors)
         ])
+        st.session_state['heatmap_html'] = heatmap_html
 
+     # Always display classification result and heatmap if available
+     if st.session_state['classification_result']:
+         st.write(f"Classification: {st.session_state['classification_result']}")
+         st.markdown(st.session_state['heatmap_html'], unsafe_allow_html=True)
 
-        # Display the custom heatmap in Streamlit
-        st.markdown(html_content, unsafe_allow_html=True)
-
-        classification_agreement = st.radio(
-            "Do you agree with the classification?",
-            ["Yes", "No"],
-        )
-
-        # Feedback box
-        reason_for_disagreement = st.text_area("Please provide your reason for disagreement:")
-        
-    if st.session_state['classification_result']:
-        st.write(f"Classification: {st.session_state['classification_result']}")
-
+     # Collect agreement and feedback
+     st.session_state['user_agreement'] = st.radio("Do you agree with the classification?", ["Yes", "No"], key='user_agreement')
+     st.session_state['reason_for_disagreement'] = st.text_area("Please provide your reason for disagreement:", key='reason_for_disagreement')
 
     if st.button("Save"):
         data = {
