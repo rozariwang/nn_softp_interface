@@ -82,7 +82,8 @@ if 'current_page' in st.session_state and st.session_state['current_page'] == "M
 
      # Always display classification result and heatmap if available
     if st.session_state['classification_result']:
-        st.write(f"Classification: {st.session_state['classification_result']}")
+        #st.write(f"Classification: {st.session_state['classification_result']}")
+        st.markdown(f"**Classification:** **{st.session_state['classification_result']}**", unsafe_allow_html=True)
         st.markdown(st.session_state['heatmap_html'], unsafe_allow_html=True)
 
      # Collect agreement and feedback
