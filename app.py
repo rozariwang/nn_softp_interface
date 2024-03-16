@@ -63,14 +63,22 @@ if st.button("Classify"):
         ["Yes", "No"],
     )
 
-    # Check the user's agreement and display the text area if there is disagreement
-    if classification_agreement == "No":
-        reason_for_disagreement = st.text_area("Please provide your reason for disagreement:")
-        # Update session state only if needed, for example, to use in another part of the app
-        st.session_state['reason_for_disagreement'] = reason_for_disagreement
-    elif classification_agreement == "Yes":
-        # Optionally reset the reason for disagreement in session state
-        st.session_state['reason_for_disagreement'] = ''
+    # A button to confirm the choice
+    if st.button('Confirm'):
+        # Use session_state to remember the user's choice even after rerun
+        st.session_state['confirmed_agreement'] = classification_agreement
+
+        # Once confirmed, display the feedback box if they disagreed
+        if classification_agreement == "No":
+            st.session_state['show_feedback_box'] = True
+        else:
+            st.session_state['show_feedback_box'] = False
+            # Optionally, handle the "Yes" case or reset state as necessary
+
+# Conditional display based on session_state, to persist across reruns
+if st.session_state.get('show_feedback_box', False):
+    reason_for_disagreement = st.text_area("Please provide your reason for disagreement:")
+    st.session_state['reason_for_disagreement'] = reason_for_disagreement
    
         # Saving data to CSV
         data = {
