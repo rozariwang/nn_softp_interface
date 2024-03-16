@@ -75,10 +75,10 @@ if st.button("Classify"):
             st.session_state['show_feedback_box'] = False
             # Optionally, handle the "Yes" case or reset state as necessary
 
-# Conditional display based on session_state, to persist across reruns
-if st.session_state.get('show_feedback_box', False):
-    reason_for_disagreement = st.text_area("Please provide your reason for disagreement:")
-    st.session_state['reason_for_disagreement'] = reason_for_disagreement
+    # Conditional display based on session_state, to persist across reruns
+    if st.session_state.get('show_feedback_box', False):
+        reason_for_disagreement = st.text_area("Please provide your reason for disagreement:")
+        st.session_state['reason_for_disagreement'] = reason_for_disagreement
    
         # Saving data to CSV
         data = {
