@@ -7,17 +7,24 @@ import random_generator
 import subprocess
 import os
 
-# Page Configuration
-st.set_page_config(page_title="News Classifier App", layout="wide")
+if 'current_page' not in st.session_state:
+    st.session_state['current_page'] = "Main Page"
 
-# Sidebar for navigation
+# Function to change the current page
+def change_page(page_name):
+    st.session_state['current_page'] = page_name
+
+# Page navigation buttons
 st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["Main Page", "Fact-Checking Links", "Dataset", "Model Structure"])
+st.sidebar.button("Main Page", on_click=change_page, args=("Main Page",))
+st.sidebar.button("Fact-Checking Links", on_click=change_page, args=("Fact-Checking Links",))
+st.sidebar.button("Dataset", on_click=change_page, args=("Dataset",))
+st.sidebar.button("Model Structure", on_click=change_page, args=("Model Structure",))
 
 #########################
 #### Main Page       ####
 #########################
-if page == "Main Page":
+if st.session_state['current_page'] == "Main Page":
     st.title("News Classifier with Surprisal Values")
 
 # Text input for the article title and body
@@ -121,20 +128,29 @@ if st.button("Save"):
             
     except subprocess.CalledProcessError as e:
         st.error(f"An error occurred: {e}")
+        
 
 #########################
 #### Fact-Checking   ####
 #########################
-elif page == "Fact-Checking Links":
+elif st.session_state['current_page'] == "Fact-Checking Links":
     st.title("Fact-Checking Links")
+    # Displaying fact-checking links
+    fact_checking_sites = {
+        "FactCheck.org": "https://www.factcheck.org/",
+        "PolitiFact": "https://www.politifact.com/",
+        "Taiwan FactCheck Center": "https://tfc-taiwan.org.tw/",
+        "Taiwan FactCheck Center (English)": "https://tfc-taiwan.org.tw/en",
+        "Cofacts": "https://cofacts.tw/"
+    }
 
-    # Embedding or linking to fact-checking websites
-    # You can list the links here using st.markdown() for hyperlinks
+    for site_name, site_url in fact_checking_sites.items():
+        st.markdown(f"[{site_name}]({site_url})")
 
 #########################
 #### Dataset         ####
 #########################
-elif page == "Dataset":
+elif st.session_state['current_page'] == "Dataset":
     st.title("Dataset View")
 
     # Integrate with Awesome Table or simply display your dataset using Streamlit
@@ -144,19 +160,9 @@ elif page == "Dataset":
 #########################
 #### Model Structure ####
 #########################
-elif page == "Model Structure":
+elif st.session_state['current_page'] == "Model Structure":
     st.title("Model Structure and Design")
 
-    # Describe or visualize your model's structure and design
-    # You could use diagrams, code snippets, or textual descriptions
+    
 
-# Example of conditional logic within the 'Main Page' section, trimmed for brevity
-if page == "Main Page":
-    if st.button("Classify"):
-        # Classification logic and feedback collection (trimmed for brevity)
-        pass
 
-    # Example of saving data, adjusted to trigger only in the "Main Page" section
-    if st.button("Save"):
-        # Save logic (trimmed for brevity)
-        pass
