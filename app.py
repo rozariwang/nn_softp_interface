@@ -132,7 +132,32 @@ elif st.session_state['current_page'] == "Fact-Checking Links":
 #### Dataset         ####
 #########################
 elif st.session_state['current_page'] == "Dataset":
-    st.title("Dataset View")
+    st.title("Datasets ")
+    
+    liar_train_url = 'https://raw.githubusercontent.com/rozariwang/nn_softp_interface/dae49f6d0f2e0446f2243bb0053af280389ee498/liar_dataset/train.tsv'
+    #cofacts_train_url = 'URL_TO_COFCTS_TRAIN_DATASET'  # Note: GitHub doesn't support Parquet directly; consider converting to CSV or hosting elsewhere
+
+    liar_df = pd.read_csv(liar_train_url, sep='\t', header=None)
+    liar_df.columns = ['ID', 'Label', 'Statement', 'Subject', 'Speaker', 'Speaker\'s Job Title', 'State Info', 'Party Affiliation', 'Barely True Counts', 'False Counts', 'Half True Counts', 'Mostly True Counts', 'Pants on Fire Counts', 'Context']
+   
+    st.write("LIAR Dataset Preview:")
+    st.dataframe(liar_df.head())
+
+    # Function to visualize label distribution
+    def visualize_label_distribution(df, title):
+        label_counts = df['Label'].value_counts()
+        fig, ax = plt.subplots()
+        label_counts.plot(kind='bar', ax=ax)
+        ax.set_title(title)
+        ax.set_xlabel('Label')
+        ax.set_ylabel('Count')
+        st.pyplot(fig)
+
+# Visualize label distribution for LIAR dataset
+visualize_label_distribution(liar_df, 'LIAR Dataset Label Distribution')
+
+    
+   
 
     # Integrate with Awesome Table or simply display your dataset using Streamlit
     # For Awesome Table, you'll likely need to embed or link to it since direct integration
