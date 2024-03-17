@@ -134,27 +134,31 @@ elif st.session_state['current_page'] == "Fact-Checking Links":
 elif st.session_state['current_page'] == "Datasets":
     st.title("Datasets")
     
-    liar_train_url = 'https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/liar_dataset/train.csv?token=GHSAT0AAAAAACJV5W3OLILIJVTNRBICYBSGZPXF3SQ'
+    liar_train_url = 'https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/liar_dataset/train.csv'
     #cofacts_train_url = 'https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/cofacts_dataset/train.csv?token=GHSAT0AAAAAACJV5W3OVA4AM6WQ2UXPUCZEZPXF47A'  
-    liar_df = pd.read_csv(liar_train_url, sep='\t', header=None)
-    liar_df.columns = ['ID', 'Label', 'Statement', 'Subject', 'Speaker', 'Speaker\'s Job Title', 'State Info', 'Party Affiliation', 'Barely True Counts', 'False Counts', 'Half True Counts', 'Mostly True Counts', 'Pants on Fire Counts', 'Context']
-   
-    st.write("LIAR Dataset Preview:")
-    st.dataframe(liar_df.head())
+    
+    try:
+        liar_df = pd.read_csv(liar_train_url)
+        liar_df.columns = ['ID', 'Label', 'Statement', 'Subject', 'Speaker', 'Speaker\'s Job Title', 'State Info', 'Party Affiliation', 'Barely True Counts', 'False Counts', 'Half True Counts', 'Mostly True Counts', 'Pants on Fire Counts', 'Context']
+        
+        st.write("LIAR Dataset Preview:")
+        st.dataframe(liar_df.head())
 
-    # Function to visualize label distribution
-    def visualize_label_distribution(df, title):
-        label_counts = df['Label'].value_counts()
-        fig, ax = plt.subplots()
-        label_counts.plot(kind='bar', ax=ax)
-        ax.set_title(title)
-        ax.set_xlabel('Label')
-        ax.set_ylabel('Count')
-        st.pyplot(fig)
+        # Function to visualize label distribution
+        def visualize_label_distribution(df, title):
+            label_counts = df['Label'].value_counts()
+            fig, ax = plt.subplots()
+            label_counts.plot(kind='bar', ax=ax)
+            ax.set_title(title)
+            ax.set_xlabel('Label')
+            ax.set_ylabel('Count')
+            st.pyplot(fig)
 
-    # Visualize label distribution for LIAR dataset
-    visualize_label_distribution(liar_df, 'LIAR Dataset Label Distribution')
-
+        # Visualize label distribution for LIAR dataset
+        visualize_label_distribution(liar_df, 'LIAR Dataset Label Distribution')
+    
+    except Exception as e:
+        st.error(f"Failed to load the dataset. Error: {str(e)}")
     
    
 
