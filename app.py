@@ -41,8 +41,8 @@ def text_color_from_bg(bg_color):
     brightness = r * 0.299 + g * 0.587 + b * 0.114  # Approximate brightness perception
     return "white" if brightness < 0.5 else "black"
 
-def load_dataset(url):
-    return pd.read_csv(url)
+def load_dataset(url, names=None):
+    return pd.read_csv(url, names=names, header=None if names else 'infer')
 
 def visualize_label_distribution(df, title):
     label_counts = df['label'].value_counts()
