@@ -153,8 +153,8 @@ elif st.session_state['current_page'] == "Dataset":
         ax.set_ylabel('Count')
         st.pyplot(fig)
 
-# Visualize label distribution for LIAR dataset
-visualize_label_distribution(liar_df, 'LIAR Dataset Label Distribution')
+    # Visualize label distribution for LIAR dataset
+    visualize_label_distribution(liar_df, 'LIAR Dataset Label Distribution')
 
     
    
