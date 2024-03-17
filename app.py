@@ -44,6 +44,12 @@ def text_color_from_bg(bg_color):
 def load_dataset(url, names=None):
     return pd.read_csv(url, names=names, header=None if names else 'infer')
 
+def count_lines_in_csv(url):
+    # Efficiently counts the lines in a CSV file without loading it into memory
+    response = requests.get(url, stream=True)
+    lines = response.iter_lines()
+    return sum(1 for line in lines)
+
 def visualize_label_distribution(df, title):
     label_counts = df['label'].value_counts()
     fig, ax = plt.subplots()
@@ -143,6 +149,7 @@ elif st.session_state['current_page'] == "Fact-Checking Links":
 #########################
 #### Dataset         ####
 #########################
+'''
 elif st.session_state['current_page'] == "Datasets":
     st.title("Datasets")
     
@@ -186,7 +193,49 @@ elif st.session_state['current_page'] == "Datasets":
     ax.axis('equal')
     ax.set_title('Cofacts Dataset Split')
     st.pyplot(fig)
+'''
+
+elif st.session_state['current_page'] == "Datasets":
+    st.title("Datasets")
     
+    # Column names for the LIAR dataset
+    liar_columns = ['ID', 'label', 'Statement', 'Subject', 'Speaker', "Speaker's Job Title", 'State Info', 'Party Affiliation', 'Barely True Counts', 'False Counts', 'Half True Counts', 'Mostly True Counts', 'Pants on Fire Counts', 'Context']
+
+    # Dataset URLs with names where applicable
+    datasets = {
+        "LIAR Train": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/liar_dataset/train.csv', liar_columns),
+        "LIAR Test": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/liar_dataset/test.csv', liar_columns),
+        "LIAR Validation": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/liar_dataset/valid.csv', liar_columns),
+        "Cofacts Train": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/cofacts_dataset/train.csv', None),
+        "Cofacts Test": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/cofacts_dataset/test.csv', None),
+        "Cofacts Validation": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/cofacts_dataset/validation.csv', None)
+    }
+
+    for name, (url, names) in datasets.items():
+        try:
+            df = load_dataset(url, names=names)
+            st.write(f"{name} Dataset Preview:")
+            st.dataframe(df.head())
+            if 'label' in df.columns:
+                visualize_label_distribution(df, f'{name} Label Distribution')
+        except Exception as e:
+            st.error(f"Failed to load {name}. Error: {str(e)}")
+
+    # Pie chart for dataset splits - LIAR
+    liar_sizes = [count_lines_in_csv(datasets["LIAR Train"][0]), count_lines_in_csv(datasets["LIAR Test"][0]), count_lines_in_csv(datasets["LIAR Validation"][0])]
+    fig, ax = plt.subplots()
+    ax.pie(liar_sizes, labels=['Train', 'Test', 'Validation'], autopct='%1.1f%%', startangle=90)
+    ax.axis('equal')
+    ax.set_title('LIAR Dataset Split')
+    st.pyplot(fig)
+
+    # Pie chart for dataset splits - Cofacts
+    cofacts_sizes = [count_lines_in_csv(datasets["Cofacts Train"][0]), count_lines_in_csv(datasets["Cofacts Test"][0]), count_lines_in_csv(datasets["Cofacts Validation"][0])]
+    fig, ax = plt.subplots()
+    ax.pie(cofacts_sizes, labels=['Train', 'Test', 'Validation'], autopct='%1.1f%%', startangle=90)
+    ax.axis('equal')
+    ax.set_title('Cofacts Dataset Split')
+    st.pyplot(fig)
     
    
 
