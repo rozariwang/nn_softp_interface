@@ -171,34 +171,46 @@ elif st.session_state['current_page'] == "Fact-Checking Links":
 elif st.session_state['current_page'] == "Datasets":
     st.title("Datasets")
     
-    # Column names for the LIAR dataset
-    liar_columns = ['ID', 'label', 'Statement', 'Subject', 'Speaker', "Speaker's Job Title", 'State Info', 'Party Affiliation', 'Barely True Counts', 'False Counts', 'Half True Counts', 'Mostly True Counts', 'Pants on Fire Counts', 'Context']
+    # Sub-page selection
+    dataset_choice = st.radio("Choose a dataset", ("LIAR", "Cofacts"))
 
-    # Dataset URLs with names where applicable
-    datasets = {
-        "LIAR Train": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/liar_dataset/train.csv', liar_columns),
-        "LIAR Test": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/liar_dataset/test.csv', liar_columns),
-        "LIAR Validation": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/liar_dataset/valid.csv', liar_columns),
-        "Cofacts Train": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/cofacts_dataset/train.csv', None),
-        "Cofacts Test": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/cofacts_dataset/test.csv', None),
-        "Cofacts Validation": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/cofacts_dataset/validation.csv', None)
-    }
+    if dataset_choice == "LIAR":
+        # Column names for the LIAR dataset
+        liar_columns = ['ID', 'label', 'Statement', 'Subject', 'Speaker', "Speaker's Job Title", 'State Info', 'Party Affiliation', 'Barely True Counts', 'False Counts', 'Half True Counts', 'Mostly True Counts', 'Pants on Fire Counts', 'Context']
 
-    for name, (url, names) in datasets.items():
-        try:
+        # LIAR Dataset URLs
+        liar_datasets = {
+            "LIAR Train": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/liar_dataset/train.csv', liar_columns),
+            "LIAR Test": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/liar_dataset/test.csv', liar_columns),
+            "LIAR Validation": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/liar_dataset/valid.csv', liar_columns),
+        }
+
+        for name, (url, names) in liar_datasets.items():
             df = load_dataset(url, names=names)
-            st.write(f"{name} Dataset Preview:")
+            st.write(f"{name} Preview:")
             st.dataframe(df.head())
-            if 'label' in df.columns:
-                visualize_label_distribution(df, f'{name} Label Distribution')
-        except Exception as e:
-            st.error(f"Failed to load {name}. Error: {str(e)}")
+            visualize_label_distribution(df, f'{name} Label Distribution')
 
-    # Pie chart for dataset splits - LIAR
-    plot_pie_chart(liar_sizes, 'LIAR Dataset Split')
-    
-    # Pie chart for dataset splits - Cofacts
-    plot_pie_chart(cofacts_sizes, 'Cofacts Dataset Split')
+        # Pie chart for LIAR dataset splits
+        plot_pie_chart(liar_sizes, 'LIAR Dataset Split')
+
+    elif dataset_choice == "Cofacts":
+        # Cofacts Dataset URLs
+        cofacts_datasets = {
+            "Cofacts Train": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/cofacts_dataset/train.csv', None),
+            "Cofacts Test": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/cofacts_dataset/test.csv', None),
+            "Cofacts Validation": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/cofacts_dataset/validation.csv', None)
+        }
+
+        for name, (url, names) in cofacts_datasets.items():
+            df = load_dataset(url, names=names)
+            st.write(f"{name} Preview:")
+            st.dataframe(df.head())
+            visualize_label_distribution(df, f'{name} Label Distribution')
+
+        # Pie chart for Cofacts dataset splits
+        plot_pie_chart(cofacts_sizes, 'Cofacts Dataset Split')
+
     
 
     # Integrate with Awesome Table or simply display your dataset using Streamlit
