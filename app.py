@@ -149,8 +149,8 @@ elif st.session_state['current_page'] == "Fact-Checking Links":
 #########################
 #### Dataset         ####
 #########################
-'''
-elif st.session_state['current_page'] == "Datasets":
+ '''
+ elif st.session_state['current_page'] == "Datasets":
     st.title("Datasets")
     
     # LIAR Dataset Column Names
@@ -193,7 +193,7 @@ elif st.session_state['current_page'] == "Datasets":
     ax.axis('equal')
     ax.set_title('Cofacts Dataset Split')
     st.pyplot(fig)
-'''
+    '''
 
 elif st.session_state['current_page'] == "Datasets":
     st.title("Datasets")
