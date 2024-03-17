@@ -53,15 +53,15 @@ def visualize_label_distribution(df, title):
     st.pyplot(fig)
 
 liar_sizes = {
-    "LIAR Train": 10240,  # example value
-    "LIAR Test": 1267,  # example value
-    "LIAR Validation": 1284  # example value
+    "Train": 10240,  # example value
+    "Test": 1267,  # example value
+    "Validation": 1284  # example value
 }
 
 cofacts_sizes = {
-    "Cofacts Train": 5042,  # example value
-    "Cofacts Test": 631,  # example value
-    "Cofacts Validation": 629  # example value
+    "Train": 5042,  # example value
+    "Test": 631,  # example value
+    "Validation": 629  # example value
 }
 
 def plot_pie_chart(sizes, title):
