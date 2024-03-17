@@ -135,8 +135,7 @@ elif st.session_state['current_page'] == "Datasets":
     st.title("Datasets")
     
     liar_train_url = 'https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/liar_dataset/train.csv?token=GHSAT0AAAAAACJV5W3OLILIJVTNRBICYBSGZPXF3SQ'
-    #cofacts_train_url = 'URL_TO_COFCTS_TRAIN_DATASET'  # Note: GitHub doesn't support Parquet directly; consider converting to CSV or hosting elsewhere
-
+    #cofacts_train_url = 'https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/cofacts_dataset/train.csv?token=GHSAT0AAAAAACJV5W3OVA4AM6WQ2UXPUCZEZPXF47A'  
     liar_df = pd.read_csv(liar_train_url, sep='\t', header=None)
     liar_df.columns = ['ID', 'Label', 'Statement', 'Subject', 'Speaker', 'Speaker\'s Job Title', 'State Info', 'Party Affiliation', 'Barely True Counts', 'False Counts', 'Half True Counts', 'Mostly True Counts', 'Pants on Fire Counts', 'Context']
    
