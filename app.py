@@ -41,6 +41,17 @@ def text_color_from_bg(bg_color):
     brightness = r * 0.299 + g * 0.587 + b * 0.114  # Approximate brightness perception
     return "white" if brightness < 0.5 else "black"
 
+def load_dataset(url):
+    return pd.read_csv(url)
+
+def visualize_label_distribution(df, title):
+    label_counts = df['Label'].value_counts()
+    fig, ax = plt.subplots()
+    ax.pie(label_counts, labels=label_counts.index, autopct='%1.1f%%', startangle=90)
+    ax.axis('equal')  # Equal aspect ratio ensures the pie chart is circular.
+    ax.set_title(title)
+    st.pyplot(fig)
+
 
 # Page navigation buttons
 st.sidebar.title("🚀 Navigation")
@@ -136,30 +147,40 @@ elif st.session_state['current_page'] == "Datasets":
     st.title("Datasets")
     
     liar_train_url = 'https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/liar_dataset/train.csv'
-    #cofacts_train_url = 'https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/cofacts_dataset/train.csv?token=GHSAT0AAAAAACJV5W3OVA4AM6WQ2UXPUCZEZPXF47A'  
+    liar_test_url = 'https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/liar_dataset/test.csv'
+    liar_val_url = 'https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/liar_dataset/valid.csv'
     
-    try:
-        liar_df = pd.read_csv(liar_train_url)
-        liar_df.columns = ['ID', 'Label', 'Statement', 'Subject', 'Speaker', 'Speaker\'s Job Title', 'State Info', 'Party Affiliation', 'Barely True Counts', 'False Counts', 'Half True Counts', 'Mostly True Counts', 'Pants on Fire Counts', 'Context']
-        
-        st.write("LIAR Dataset Preview:")
-        st.dataframe(liar_df.head())
+    cofacts_train_url = 'https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/cofacts_dataset/train.csv'  
+    cofacts_test_url = 'https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/cofacts_dataset/test.csv'
+    cofacts_val_url = 'https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/cofacts_dataset/validation.csv'
 
-        # Function to visualize label distribution
-        def visualize_label_distribution(df, title):
-            label_counts = df['Label'].value_counts()
-            fig, ax = plt.subplots()
-            label_counts.plot(kind='bar', ax=ax)
-            ax.set_title(title)
-            ax.set_xlabel('Label')
-            ax.set_ylabel('Count')
-            st.pyplot(fig)
+    datasets = {
+        "LIAR Train": liar_train_url,
+        "LIAR Test": liar_test_url,
+        "LIAR Validation": liar_val_url,
+        "Cofacts Train": cofacts_train_url,
+        "Cofacts Test": cofacts_test_url,
+        "Cofacts Validation": cofacts_val_url
+    }
 
-        # Visualize label distribution for LIAR dataset
-        visualize_label_distribution(liar_df, 'LIAR Dataset Label Distribution')
-    
-    except Exception as e:
-        st.error(f"Failed to load the dataset. Error: {str(e)}")
+    for name, url in datasets.items():
+        try:
+            df = load_dataset(url)
+            st.write(f"{name} Dataset Preview:")
+            st.dataframe(df.head())
+            if 'Label' in df.columns:
+                visualize_label_distribution(df, f'{name} Label Distribution')
+        except Exception as e:
+            st.error(f"Failed to load {name}. Error: {str(e)}")
+
+    # Pie chart for dataset splits
+    fig, ax = plt.subplots()
+    sizes = [len(load_dataset(liar_train_url)), len(load_dataset(liar_test_url)), len(load_dataset(liar_val_url))]
+    labels = ['Train', 'Test', 'Validation']
+    ax.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90)
+    ax.axis('equal')
+    ax.set_title('LIAR Dataset Split')
+    st.pyplot(fig)
     
    
 
