@@ -44,12 +44,6 @@ def text_color_from_bg(bg_color):
 def load_dataset(url, names=None):
     return pd.read_csv(url, names=names, header=None if names else 'infer')
 
-def count_lines_in_csv(url):
-    # Efficiently counts the lines in a CSV file without loading it into memory
-    response = requests.get(url, stream=True)
-    lines = response.iter_lines()
-    return sum(1 for line in lines)
-
 def visualize_label_distribution(df, title):
     label_counts = df['label'].value_counts()
     fig, ax = plt.subplots()
@@ -58,6 +52,29 @@ def visualize_label_distribution(df, title):
     ax.set_title(title)
     st.pyplot(fig)
 
+liar_sizes = {
+    "LIAR Train": 10240,  # example value
+    "LIAR Test": 1267,  # example value
+    "LIAR Validation": 1284  # example value
+}
+
+cofacts_sizes = {
+    "Cofacts Train": 5042,  # example value
+    "Cofacts Test": 631,  # example value
+    "Cofacts Validation": 629  # example value
+}
+
+def plot_pie_chart(sizes, title):
+    fig, ax = plt.subplots()
+    total = sum(sizes.values())
+    # Custom autopct function to show both percentage and absolute value
+    def autopct(pct):
+        absolute = int(pct/100.*total)
+        return "{:.1f}%\n({:d})".format(pct, absolute)
+    ax.pie(sizes.values(), labels=sizes.keys(), autopct=autopct, startangle=90)
+    ax.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+    ax.set_title(title)
+    st.pyplot(fig)
 
 # Page navigation buttons
 st.sidebar.title("🚀 Navigation")
@@ -178,22 +195,11 @@ elif st.session_state['current_page'] == "Datasets":
             st.error(f"Failed to load {name}. Error: {str(e)}")
 
     # Pie chart for dataset splits - LIAR
-    liar_sizes = [count_lines_in_csv(datasets["LIAR Train"][0]), count_lines_in_csv(datasets["LIAR Test"][0]), count_lines_in_csv(datasets["LIAR Validation"][0])]
-    fig, ax = plt.subplots()
-    ax.pie(liar_sizes, labels=['Train', 'Test', 'Validation'], autopct='%1.1f%%', startangle=90)
-    ax.axis('equal')
-    ax.set_title('LIAR Dataset Split')
-    st.pyplot(fig)
-
-    # Pie chart for dataset splits - Cofacts
-    cofacts_sizes = [count_lines_in_csv(datasets["Cofacts Train"][0]), count_lines_in_csv(datasets["Cofacts Test"][0]), count_lines_in_csv(datasets["Cofacts Validation"][0])]
-    fig, ax = plt.subplots()
-    ax.pie(cofacts_sizes, labels=['Train', 'Test', 'Validation'], autopct='%1.1f%%', startangle=90)
-    ax.axis('equal')
-    ax.set_title('Cofacts Dataset Split')
-    st.pyplot(fig)
+    plot_pie_chart(liar_sizes, 'LIAR Dataset Split')
     
-   
+    # Pie chart for dataset splits - Cofacts
+    plot_pie_chart(cofacts_sizes, 'Cofacts Dataset Split')
+    
 
     # Integrate with Awesome Table or simply display your dataset using Streamlit
     # For Awesome Table, you'll likely need to embed or link to it since direct integration
