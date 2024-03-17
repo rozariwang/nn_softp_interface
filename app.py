@@ -134,7 +134,7 @@ elif st.session_state['current_page'] == "Fact-Checking Links":
 elif st.session_state['current_page'] == "Dataset":
     st.title("Datasets ")
     
-    liar_train_url = 'https://raw.githubusercontent.com/rozariwang/nn_softp_interface/dae49f6d0f2e0446f2243bb0053af280389ee498/liar_dataset/train.tsv'
+    liar_train_url = 'https://github.com/rozariwang/nn_softp_interface/tree/e8d820e9d91a8acd61bb1191f2d86ccef196db93/liar_dataset/train.csv'
     #cofacts_train_url = 'URL_TO_COFCTS_TRAIN_DATASET'  # Note: GitHub doesn't support Parquet directly; consider converting to CSV or hosting elsewhere
 
     liar_df = pd.read_csv(liar_train_url, sep='\t', header=None)
