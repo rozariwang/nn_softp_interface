@@ -175,6 +175,10 @@ elif st.session_state['current_page'] == "Datasets":
     dataset_choice = st.radio("Choose a dataset", ("LIAR", "Cofacts"))
 
     if dataset_choice == "LIAR":
+
+        # Pie chart for LIAR dataset splits
+        plot_pie_chart(liar_sizes, 'LIAR Dataset Split')
+        
         # Column names for the LIAR dataset
         liar_columns = ['ID', 'label', 'Statement', 'Subject', 'Speaker', "Speaker's Job Title", 'State Info', 'Party Affiliation', 'Barely True Counts', 'False Counts', 'Half True Counts', 'Mostly True Counts', 'Pants on Fire Counts', 'Context']
 
@@ -191,10 +195,11 @@ elif st.session_state['current_page'] == "Datasets":
             st.dataframe(df.head())
             visualize_label_distribution(df, f'{name} Label Distribution')
 
-        # Pie chart for LIAR dataset splits
-        plot_pie_chart(liar_sizes, 'LIAR Dataset Split')
-
     elif dataset_choice == "Cofacts":
+
+        # Pie chart for Cofacts dataset splits
+        plot_pie_chart(cofacts_sizes, 'Cofacts Dataset Split')
+        
         # Cofacts Dataset URLs
         cofacts_datasets = {
             "Cofacts Train": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/cofacts_dataset/train.csv', None),
@@ -208,14 +213,7 @@ elif st.session_state['current_page'] == "Datasets":
             st.dataframe(df.head())
             visualize_label_distribution(df, f'{name} Label Distribution')
 
-        # Pie chart for Cofacts dataset splits
-        plot_pie_chart(cofacts_sizes, 'Cofacts Dataset Split')
 
-    
-
-    # Integrate with Awesome Table or simply display your dataset using Streamlit
-    # For Awesome Table, you'll likely need to embed or link to it since direct integration
-    # within Streamlit isn't straightforward without custom components.
 
 #########################
 #### Model Structure ####
