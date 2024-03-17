@@ -45,7 +45,7 @@ def text_color_from_bg(bg_color):
 st.sidebar.title("🚀 Navigation")
 st.sidebar.button("Main Page", on_click=change_page, args=("Main Page",))
 st.sidebar.button("Fact-Checking Links", on_click=change_page, args=("Fact-Checking Links",))
-st.sidebar.button("Dataset", on_click=change_page, args=("Datasets",))
+st.sidebar.button("Datasets", on_click=change_page, args=("Datasets",))
 st.sidebar.button("Model Structure", on_click=change_page, args=("Model Structure",))
 
 #########################
@@ -131,8 +131,8 @@ elif st.session_state['current_page'] == "Fact-Checking Links":
 #########################
 #### Dataset         ####
 #########################
-elif st.session_state['current_page'] == "Dataset":
-    st.title("Datasets ")
+elif st.session_state['current_page'] == "Datasets":
+    st.title("Datasets")
     
     liar_train_url = 'https://github.com/rozariwang/nn_softp_interface/tree/e8d820e9d91a8acd61bb1191f2d86ccef196db93/liar_dataset/train.csv'
     #cofacts_train_url = 'URL_TO_COFCTS_TRAIN_DATASET'  # Note: GitHub doesn't support Parquet directly; consider converting to CSV or hosting elsewhere
