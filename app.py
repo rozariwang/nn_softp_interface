@@ -149,51 +149,7 @@ elif st.session_state['current_page'] == "Fact-Checking Links":
 #########################
 #### Dataset         ####
 #########################
-'''
- elif st.session_state['current_page'] == "Datasets":
-    st.title("Datasets")
-    
-    # LIAR Dataset Column Names
-    liar_columns = ['ID', 'label', 'Statement', 'Subject', 'Speaker', "Speaker's Job Title", 'State Info', 'Party Affiliation', 'Barely True Counts', 'False Counts', 'Half True Counts', 'Mostly True Counts', 'Pants on Fire Counts', 'Context']
 
-    # Dataset URLs
-    datasets = {
-        "LIAR Train": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/liar_dataset/train.csv', liar_columns),
-        "LIAR Test": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/liar_dataset/test.csv', liar_columns),
-        "LIAR Validation": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/liar_dataset/valid.csv', liar_columns),
-        "Cofacts Train": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/cofacts_dataset/train.csv', None),
-        "Cofacts Test": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/cofacts_dataset/test.csv', None),
-        "Cofacts Validation": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/cofacts_dataset/validation.csv', None)
-    }
-
-    for name, (url, names) in datasets.items():
-        try:
-            df = load_dataset(url, names=names)
-            st.write(f"{name} Dataset Preview:")
-            st.dataframe(df.head())
-            if 'label' in df.columns:  # Assuming 'label' is a common column name after adjustments
-                visualize_label_distribution(df, f'{name} Label Distribution')
-        except Exception as e:
-            st.error(f"Failed to load {name}. Error: {str(e)}")
-
-    # Pie chart for dataset splits - LIAR
-    fig, ax = plt.subplots()
-    sizes = [len(load_dataset(datasets["LIAR Train"])), len(load_dataset(datasets["LIAR Test"])), len(load_dataset(datasets["LIAR Validation"]))]
-    labels = ['Train', 'Test', 'Validation']
-    ax.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90)
-    ax.axis('equal')
-    ax.set_title('LIAR Dataset Split')
-    st.pyplot(fig)
-
-    # Pie chart for dataset splits - Cofacts
-    fig, ax = plt.subplots()
-    sizes = [len(load_dataset(datasets["Cofacts Train"])), len(load_dataset(datasets["Cofacts Test"])), len(load_dataset(datasets["Cofacts Validation"]))]
-    labels = ['Train', 'Test', 'Validation']
-    ax.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90)
-    ax.axis('equal')
-    ax.set_title('Cofacts Dataset Split')
-    st.pyplot(fig)
-'''
 
 elif st.session_state['current_page'] == "Datasets":
     st.title("Datasets")
