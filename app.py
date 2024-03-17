@@ -8,6 +8,7 @@ import subprocess
 import os
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+import matplotlib.pyplot as plt
 
 if 'current_page' not in st.session_state:
     st.session_state['current_page'] = "Main Page"
