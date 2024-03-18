@@ -106,12 +106,12 @@ if 'current_page' in st.session_state and st.session_state['current_page'] == "M
     source_link = st.text_input('Enter the source link of the article:', '')
     threshold = st.number_input("Set the threshold for classification:", min_value=0.0, max_value=1.0, value=0.5)
 
-    tokenizer, classifier, lm = the_model.instantiate_model(6)
+    tokenizer, classifier, lm = instantiate_model(6)
 
 
 
     if st.button("Classify"):
-        prediction = the_model.predict(input, tokenizer, classifier, lm)
+        prediction = predict(input, tokenizer, classifier, lm)
         print(prediction)
         classification, surprisal_values, words = random_generator.generate_surprisal_values(article_body, threshold)
         st.session_state['classification_result'] = classification # Store the result in session state
