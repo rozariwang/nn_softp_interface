@@ -40,15 +40,14 @@ def instantiate_model(num_classes=6):
 
     print("LOADING MODEL")
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    access_token = "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"
 
-    tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased", token=access_token)
+    tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
 
     #tokenizer.pad_token = tokenizer.eos_token
     #tokenizer.add_special_tokens({'pad_token': '</s>'})
 
     #lm = AutoModel.from_pretrained("meta-llama/Llama-2-7b-hf", token=access_token, quantization_config=bnb_config)
-    lm = AutoModel.from_pretrained("bert-base-uncased", token=access_token)
+    lm = AutoModel.from_pretrained("bert-base-uncased")
 
     classifier = SimplestLinearHead(lm.config.hidden_size, num_classes).to(device)
 
