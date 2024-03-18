@@ -16,6 +16,7 @@ from transformers import AutoModel, AutoModelForCausalLM, AutoModelForSequenceCl
 from the_model import instantiate_model, predict
 
 
+
 if 'current_page' not in st.session_state:
     st.session_state['current_page'] = "Main Page"
 
