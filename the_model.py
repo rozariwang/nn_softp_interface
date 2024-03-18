@@ -42,7 +42,7 @@ def instantiate_model(num_classes=6):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     access_token = "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"
 
-    tokenizer = AutoTokenizer.from_pretrained("google-bert/bert-base-uncased", token=access_token)
+    tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased", token=access_token)
 
     #tokenizer.pad_token = tokenizer.eos_token
     #tokenizer.add_special_tokens({'pad_token': '</s>'})
