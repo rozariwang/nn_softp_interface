@@ -29,12 +29,14 @@ def instantiate_model(num_classes=6):
             logits = self.fc(pooled_output)
             return logits
 
+    """
     bnb_config = BitsAndBytesConfig(
         load_in_4bit=True,
         bnb_4bit_use_double_quant=True,
         bnb_4bit_quant_type="nf4",
         bnb_4bit_compute_dtype=torch.bfloat16
     )
+    """
 
     print("LOADING MODEL")
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -45,7 +47,8 @@ def instantiate_model(num_classes=6):
     tokenizer.pad_token = tokenizer.eos_token
     tokenizer.add_special_tokens({'pad_token': '</s>'})
 
-    lm = AutoModel.from_pretrained("meta-llama/Llama-2-7b-hf", token=access_token, quantization_config=bnb_config)
+    #lm = AutoModel.from_pretrained("meta-llama/Llama-2-7b-hf", token=access_token, quantization_config=bnb_config)
+    lm = AutoModel.from_pretrained("meta-llama/Llama-2-7b-hf", token=access_token)
 
     classifier = SimplestLinearHead(lm.config.hidden_size, num_classes).to(device)
 
