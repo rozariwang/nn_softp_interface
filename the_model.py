@@ -44,7 +44,7 @@ def instantiate_model(num_classes=6):
 
     tokenizer = AutoTokenizer.from_pretrained("google-bert/bert-base-uncased", token=access_token)
 
-    tokenizer.pad_token = tokenizer.eos_token
+    #tokenizer.pad_token = tokenizer.eos_token
     tokenizer.add_special_tokens({'pad_token': '</s>'})
 
     #lm = AutoModel.from_pretrained("meta-llama/Llama-2-7b-hf", token=access_token, quantization_config=bnb_config)
