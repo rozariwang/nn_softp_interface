@@ -63,7 +63,7 @@ def predict(input, tokenizer, classifier, lm):
     lm.eval()
 
 
-    tokenized_input = tokenizer(input)
+    tokenized_input = tokenizer.tokenize(input)
     lm_outputs = lm(tokenized_input["input_ids"])
     classifier_outputs = classifier(lm_outputs[0].float())
 
