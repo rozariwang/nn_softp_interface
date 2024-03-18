@@ -42,17 +42,17 @@ def instantiate_model(num_classes=6):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     access_token = "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"
 
-    tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7b-hf", token=access_token)
+    tokenizer = AutoTokenizer.from_pretrained("google-bert/bert-base-uncased", token=access_token)
 
     tokenizer.pad_token = tokenizer.eos_token
     tokenizer.add_special_tokens({'pad_token': '</s>'})
 
     #lm = AutoModel.from_pretrained("meta-llama/Llama-2-7b-hf", token=access_token, quantization_config=bnb_config)
-    lm = AutoModel.from_pretrained("meta-llama/Llama-2-7b-hf", token=access_token)
+    lm = AutoModel.from_pretrained("google-bert/bert-base-uncased", token=access_token)
 
     classifier = SimplestLinearHead(lm.config.hidden_size, num_classes).to(device)
 
-    previous_checkpoint_file = "best_checkpoint_now_really_EXP2contd_Llama-7b_FULL_SimpleLinearHead_1710514184.3864572.pth"
+    previous_checkpoint_file = "checkpoint_BERT_FULL_1000_SimpleLinearHead_1710455163.7840276.pth"
     previous_checkpoint = torch.load(previous_checkpoint_file)
     classifier.load_state_dict(previous_checkpoint['classifier_state_dict'])
 
