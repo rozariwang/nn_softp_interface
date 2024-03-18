@@ -16,8 +16,6 @@ from transformers import AutoModel, AutoModelForCausalLM, AutoModelForSequenceCl
 from sklearn.metrics import accuracy_score, f1_score, confusion_matrix
 import matplotlib.pyplot as plt
 
-experiment = {"NUM_CLASSES" : 6}
-
 class SimplestLinearHead(nn.Module):
     def __init__(self, lm_output_size:int, num_classes:int):
         super(SimplestLinearHead, self).__init__()
@@ -35,36 +33,46 @@ bnb_config = BitsAndBytesConfig(
     bnb_4bit_compute_dtype=torch.bfloat16
     )
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-access_token = "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"
+def instantiate_model(num_classes=6):
+    print("LOADING MODEL")
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    access_token = "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"
 
-tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7b-hf", token=access_token)
-tokenizer.pad_token = tokenizer.eos_token
-tokenizer.add_special_tokens({'pad_token': '</s>'})
+    tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7b-hf", token=access_token)
 
-lm = AutoModel.from_pretrained("meta-llama/Llama-2-7b-hf", token=access_token, quantization_config=bnb_config)
+    tokenizer.pad_token = tokenizer.eos_token
+    tokenizer.add_special_tokens({'pad_token': '</s>'})
 
-classifier = SimplestLinearHead(lm.config.hidden_size, experiment["NUM_CLASSES"]).to(device)
+    lm = AutoModel.from_pretrained("meta-llama/Llama-2-7b-hf", token=access_token, quantization_config=bnb_config)
 
-previous_checkpoint_file = "ENTER .pth FILE HERE"
-previous_checkpoint = torch.load(previous_checkpoint_file)
-classifier.load_state_dict(previous_checkpoint['classifier_state_dict'])
+    classifier = SimplestLinearHead(lm.config.hidden_size, num_classes).to(device)
+
+    previous_checkpoint_file = "best_checkpoint_now_really_EXP2contd_Llama-7b_FULL_SimpleLinearHead_1710514184.3864572.pth"
+    previous_checkpoint = torch.load(previous_checkpoint_file)
+    classifier.load_state_dict(previous_checkpoint['classifier_state_dict'])
+
+    return tokenizer, classifier, lm
 
 
+def predict(input, tokenizer, classifier, lm):
+    classifier.eval()
+    lm.eval()
 
-classifier.eval()
-lm.eval()
 
-input_string = "ENTER THE STRING HERE"
-tokenized_input = tokenizer(input_string)
-lm_outputs = lm(tokenized_input["input_ids"])
-classifier_outputs = classifier(lm_outputs[0].float())
+    tokenized_input = tokenizer(input)
+    lm_outputs = lm(tokenized_input["input_ids"])
+    classifier_outputs = classifier(lm_outputs[0].float())
 
-# These classifier outputs are the logits
-# A call to torch.softmax(classifier_outputs) should do it! 
+    # These classifier outputs are the logits
+    # A call to torch.softmax(classifier_outputs) should do it!
 
-# to get probabilities for each label:
-label_probs = torch.softmax(classifier_outputs)
+    # to get probabilities for each label:
+    label_probs = torch.softmax(classifier_outputs)
 
-#to get the single most probable label:
-most_probable = classifier_outputs.argmax(dim=1)
+    # to get the single most probable label:
+    most_probable = classifier_outputs.argmax(dim=1)
+
+    print(f"LABEL PROBS ARE: {label_probs}")
+    print(f"MOST PROBABLE: {most_probable}")
+    return label_probs, most_probable
+
