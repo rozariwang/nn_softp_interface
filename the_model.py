@@ -16,24 +16,26 @@ from transformers import AutoModel, AutoModelForCausalLM, AutoModelForSequenceCl
 #from sklearn.metrics import accuracy_score, f1_score, confusion_matrix
 #import matplotlib.pyplot as plt
 
-class SimplestLinearHead(nn.Module):
-    def __init__(self, lm_output_size:int, num_classes:int):
-        super(SimplestLinearHead, self).__init__()
-        self.fc = nn.Linear(lm_output_size, num_classes)
 
-    def forward(self, lm_hidden_states):
-        pooled_output = torch.mean(lm_hidden_states, dim=1)
-        logits = self.fc(pooled_output)
-        return logits
-
-bnb_config = BitsAndBytesConfig(
-    load_in_4bit=True,
-    bnb_4bit_use_double_quant=True,
-    bnb_4bit_quant_type="nf4",
-    bnb_4bit_compute_dtype=torch.bfloat16
-    )
 
 def instantiate_model(num_classes=6):
+    class SimplestLinearHead(nn.Module):
+        def __init__(self, lm_output_size: int, num_classes: int):
+            super(SimplestLinearHead, self).__init__()
+            self.fc = nn.Linear(lm_output_size, num_classes)
+
+        def forward(self, lm_hidden_states):
+            pooled_output = torch.mean(lm_hidden_states, dim=1)
+            logits = self.fc(pooled_output)
+            return logits
+
+    bnb_config = BitsAndBytesConfig(
+        load_in_4bit=True,
+        bnb_4bit_use_double_quant=True,
+        bnb_4bit_quant_type="nf4",
+        bnb_4bit_compute_dtype=torch.bfloat16
+    )
+
     print("LOADING MODEL")
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     access_token = "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"

@@ -9,7 +9,7 @@ import os
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import matplotlib.pyplot as plt
-import the_model
+from the_model import instantiate_model, predict
 
 if 'current_page' not in st.session_state:
     st.session_state['current_page'] = "Main Page"
