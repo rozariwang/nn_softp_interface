@@ -53,7 +53,7 @@ def instantiate_model(num_classes=6):
     classifier = SimplestLinearHead(lm.config.hidden_size, num_classes).to(device)
 
     previous_checkpoint_file = "checkpoint_BERT_FULL_1000_SimpleLinearHead_1710455163.7840276.pth"
-    previous_checkpoint = torch.load(previous_checkpoint_file)
+    previous_checkpoint = torch.load(previous_checkpoint_file, map_location=torch.device("cpu"))
     classifier.load_state_dict(previous_checkpoint['classifier_state_dict'])
 
     return tokenizer, classifier, lm
