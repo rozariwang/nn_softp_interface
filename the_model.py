@@ -63,7 +63,7 @@ def load_checkpoint(hidden_size, num_classes) -> object:
 
 
 def predict(input: str, tokenizer: object, classifier:object, lm:object) -> (float, int):
-    classifier.eval()
+    #classifier.eval()
     lm.eval()
     with torch.no_grad():
         tokenized_input = tokenizer.tokenize(input)
