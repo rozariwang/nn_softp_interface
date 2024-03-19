@@ -26,14 +26,14 @@ def load_model() -> object:
     """
 
     """
-    return AutoModel.from_pretrained("bert-base-uncased").to("cpu")
+    return AutoModel.from_pretrained("bert-base-uncased")
 
 @st.cache_resource  # 👈 Add the caching decorator
 def load_tokenizer() -> object:
     """
 
     """
-    tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased").to("cpu")
+    tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
     tokenizer.pad_token = '</s>'
     return tokenizer
 
