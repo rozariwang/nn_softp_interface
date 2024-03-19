@@ -61,7 +61,7 @@ def load_checkpoint(hidden_size, num_classes) -> object:
 
     return classifier
 
-@st.cache_data
+
 def predict(input: str, tokenizer: object, classifier:object, lm:object) -> (float, int):
     classifier.eval()
     lm.eval()
