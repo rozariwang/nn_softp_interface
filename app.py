@@ -217,9 +217,9 @@ elif st.session_state['current_page'] == "Datasets":
         
         # Cofacts Dataset URLs
         cofacts_datasets = {
-            "Cofacts Train": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/cofacts_dataset/train.csv', None),
-            "Cofacts Test": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/cofacts_dataset/test.csv', None),
-            "Cofacts Validation": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/cofacts_dataset/validation.csv', None)
+            "Cofacts Train": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/cofacts_datasets/train.csv', None),
+            "Cofacts Test": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/cofacts_datasets/test.csv', None),
+            "Cofacts Validation": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/cofacts_datasets/validation.csv', None)
         }
 
         for name, (url, names) in cofacts_datasets.items():
