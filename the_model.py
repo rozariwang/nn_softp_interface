@@ -64,11 +64,11 @@ def load_checkpoint(hidden_size, num_classes) -> object:
 
 def predict(input: str, tokenizer: object, classifier:object, lm:object) -> (float, int):
     #classifier.eval()
-    lm.eval()
-    with torch.no_grad():
-        tokenized_input = tokenizer.tokenize(input)
-        lm_outputs = lm(tokenized_input["input_ids"])
-        classifier_outputs = classifier(lm_outputs[0].float())
+    #lm.eval()
+    #with torch.no_grad():
+    tokenized_input = tokenizer.tokenize(input)
+    lm_outputs = lm(tokenized_input["input_ids"])
+    classifier_outputs = classifier(lm_outputs[0].float())
 
     # These classifier outputs are the logits
     # A call to torch.softmax(classifier_outputs) should do it!
