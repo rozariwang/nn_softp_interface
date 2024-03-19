@@ -114,7 +114,7 @@ if 'current_page' in st.session_state and st.session_state['current_page'] == "M
 
     if st.button("Classify"):
 
-        label_probs, most_prob = predict(input, classifier, tokenizer, model)
+        label_probs, most_prob = predict(article_body, classifier, tokenizer, model)
         print(f"MOST PROBABLE: {most_prob}")
         classification, surprisal_values, words = random_generator.generate_surprisal_values(article_body, threshold)
         st.session_state['classification_result'] = classification # Store the result in session state
