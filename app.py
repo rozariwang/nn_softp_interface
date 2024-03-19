@@ -107,12 +107,13 @@ if 'current_page' in st.session_state and st.session_state['current_page'] == "M
     source_link = st.text_input('Enter the source link of the article:', '')
     threshold = st.number_input("Set the threshold for classification:", min_value=0.0, max_value=1.0, value=0.5)
 
-    tokenizer = load_tokenizer()
-    model = load_model()
-    lm_hidden_size = model.config.hidden_size
-    classifier = load_checkpoint(lm_hidden_size, 6)
+
 
     if st.button("Classify"):
+        tokenizer = load_tokenizer()
+        model = load_model()
+        lm_hidden_size = model.config.hidden_size
+        classifier = load_checkpoint(lm_hidden_size, 6)
 
         label_probs, most_prob = predict(article_body, classifier, tokenizer, model)
         print(f"MOST PROBABLE: {most_prob}")
