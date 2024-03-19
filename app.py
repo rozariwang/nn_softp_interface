@@ -109,7 +109,7 @@ if 'current_page' in st.session_state and st.session_state['current_page'] == "M
 
     tokenizer = load_tokenizer()
     model = load_model()
-    lm_hidden_size = model.hidden_size
+    lm_hidden_size = model.config.hidden_size
     classifier = load_checkpoint(lm_hidden_size, 6)
 
     if st.button("Classify"):
