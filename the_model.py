@@ -66,7 +66,9 @@ def predict(input: str, tokenizer: object, classifier:object, lm:object) -> (flo
     #classifier.eval()
     #lm.eval()
     #with torch.no_grad():
+    print(f"the input is: {input}")
     tokenized_input = tokenizer.tokenize(input)
+    print(f"the tokenized input is: {tokenized_input}")
     lm_outputs = lm(tokenized_input["input_ids"])
     classifier_outputs = classifier(lm_outputs[0].float())
 
