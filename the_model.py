@@ -16,56 +16,59 @@ from transformers import AutoModel,  AutoTokenizer
 #from sklearn.metrics import accuracy_score, f1_score, confusion_matrix
 #import matplotlib.pyplot as plt
 
+import streamlit as st
 
 
-def instantiate_model(num_classes=6):
-    class SimplestLinearHead(nn.Module):
-        def __init__(self, lm_output_size: int, num_classes: int):
-            super(SimplestLinearHead, self).__init__()
-            self.fc = nn.Linear(lm_output_size, num_classes)
+previous_checkpoint_file = "checkpoint_BERT_FULL_1000_SimpleLinearHead_1710455163.7840276.pth"
 
-        def forward(self, lm_hidden_states):
-            pooled_output = torch.mean(lm_hidden_states, dim=1)
-            logits = self.fc(pooled_output)
-            return logits
-
-    """
-    bnb_config = BitsAndBytesConfig(
-        load_in_4bit=True,
-        bnb_4bit_use_double_quant=True,
-        bnb_4bit_quant_type="nf4",
-        bnb_4bit_compute_dtype=torch.bfloat16
-    )
+@st.cache_resource  # 👈 Add the caching decorator
+def load_model() -> object:
     """
 
-    print("LOADING MODEL")
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    """
+    return AutoModel.from_pretrained("bert-base-uncased")
 
+@st.cache_resource  # 👈 Add the caching decorator
+def load_tokenizer() -> object:
+    """
+
+    """
     tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
+    tokenizer.pad_token = '</s>'
+    return tokenizer
 
-    #tokenizer.pad_token = tokenizer.eos_token
-    #tokenizer.add_special_tokens({'pad_token': '</s>'})
+class SimplestLinearHead(nn.Module):
+    def __init__(self, lm_output_size: int, num_classes: int):
+        super(SimplestLinearHead, self).__init__()
+        self.fc = nn.Linear(lm_output_size, num_classes)
 
-    #lm = AutoModel.from_pretrained("meta-llama/Llama-2-7b-hf", token=access_token, quantization_config=bnb_config)
-    lm = AutoModel.from_pretrained("bert-base-uncased")
+    def forward(self, lm_hidden_states):
+        pooled_output = torch.mean(lm_hidden_states, dim=1)
+        logits = self.fc(pooled_output)
+        return logits
 
-    classifier = SimplestLinearHead(lm.config.hidden_size, num_classes).to(device)
+@st.cache_resource  # 👈 Add the caching decorator
+def load_checkpoint(hidden_size, num_classes) -> object:
+    """
 
-    previous_checkpoint_file = "checkpoint_BERT_FULL_1000_SimpleLinearHead_1710455163.7840276.pth"
+    """
+    classifier = SimplestLinearHead(hidden_size, num_classes)
+    #classifier = SimplestLinearHead(lm.config.hidden_size, num_classes).to(device)
+
+
     previous_checkpoint = torch.load(previous_checkpoint_file, map_location=torch.device("cpu"))
     classifier.load_state_dict(previous_checkpoint['classifier_state_dict'])
 
-    return tokenizer, classifier, lm
+    return classifier
 
-
-def predict(input, tokenizer, classifier, lm):
+@st.cache_data
+def predict(input: str, tokenizer: object, classifier:object, lm:object) -> (float, int):
     classifier.eval()
     lm.eval()
-
-
-    tokenized_input = tokenizer.tokenize(input)
-    lm_outputs = lm(tokenized_input["input_ids"])
-    classifier_outputs = classifier(lm_outputs[0].float())
+    with torch.no_grad():
+        tokenized_input = tokenizer.tokenize(input)
+        lm_outputs = lm(tokenized_input["input_ids"])
+        classifier_outputs = classifier(lm_outputs[0].float())
 
     # These classifier outputs are the logits
     # A call to torch.softmax(classifier_outputs) should do it!
@@ -78,5 +81,7 @@ def predict(input, tokenizer, classifier, lm):
 
     print(f"LABEL PROBS ARE: {label_probs}")
     print(f"MOST PROBABLE: {most_probable}")
+
     return label_probs, most_probable
+
 

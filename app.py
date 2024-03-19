@@ -14,7 +14,7 @@ import torch
 import torch.nn as nn
 #from transformers import AutoModel, AutoModelForCausalLM, AutoModelForSequenceClassification, AutoTokenizer, DataCollatorWithPadding, BitsAndBytesConfig
 from transformers import AutoModel, AutoTokenizer
-from the_model import instantiate_model, predict
+from the_model import load_model, load_tokenizer, load_checkpoint, predict
 
 if 'current_page' not in st.session_state:
     st.session_state['current_page'] = "Main Page"
@@ -107,13 +107,15 @@ if 'current_page' in st.session_state and st.session_state['current_page'] == "M
     source_link = st.text_input('Enter the source link of the article:', '')
     threshold = st.number_input("Set the threshold for classification:", min_value=0.0, max_value=1.0, value=0.5)
 
-    tokenizer, classifier, lm = instantiate_model(6)
-
-
+    tokenizer = load_tokenizer()
+    model = load_model()
+    lm_hidden_size = model.hidden_size
+    classifier = load_checkpoint(lm_hidden_size, 6)
 
     if st.button("Classify"):
-        prediction = predict(input, tokenizer, classifier, lm)
-        print(prediction)
+
+        label_probs, most_prob = predict(input, classifier, tokenizer, model)
+        print(f"MOST PROBABLE: {most_prob}")
         classification, surprisal_values, words = random_generator.generate_surprisal_values(article_body, threshold)
         st.session_state['classification_result'] = classification # Store the result in session state
 
