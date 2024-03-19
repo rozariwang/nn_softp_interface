@@ -233,6 +233,8 @@ elif st.session_state['current_page'] == "Datasets":
 #########################
 elif st.session_state['current_page'] == "Model Structure":
     st.title("Model Structure and Design")
+    image_path = 'NNSoftP_Table.png' 
+    st.image(image_path, caption='NNSoftP Table Image')
 
     
 
