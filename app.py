@@ -65,9 +65,9 @@ liar_sizes = {
 }
 
 cofacts_sizes = {
-    "Train": 5042,  # example value
-    "Test": 631,  # example value
-    "Validation": 629  # example value
+    "Train": 5810,  # example value
+    "Test": 728,  # example value
+    "Validation": 725  # example value
 }
 
 def plot_pie_chart(sizes, title):
