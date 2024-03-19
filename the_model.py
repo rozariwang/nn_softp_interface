@@ -76,7 +76,7 @@ def predict(input: str, tokenizer: object, classifier:object, lm:object) -> (flo
     # A call to torch.softmax(classifier_outputs) should do it!
 
     # to get probabilities for each label:
-    label_probs = torch.softmax(classifier_outputs)
+    #label_probs = torch.softmax(classifier_outputs)
 
     # to get the single most probable label:
     most_probable = classifier_outputs.argmax(dim=1)
@@ -84,6 +84,6 @@ def predict(input: str, tokenizer: object, classifier:object, lm:object) -> (flo
     print(f"LABEL PROBS ARE: {label_probs}")
     print(f"MOST PROBABLE: {most_probable}")
 
-    return label_probs, most_probable
+    return most_probable
 
 
