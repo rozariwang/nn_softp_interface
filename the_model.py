@@ -81,7 +81,7 @@ def predict(input: str, tokenizer: object, classifier:object, lm:object) -> (flo
     # to get the single most probable label:
     most_probable = classifier_outputs.argmax(dim=1)
 
-    print(f"LABEL PROBS ARE: {label_probs}")
+    #print(f"LABEL PROBS ARE: {label_probs}")
     print(f"MOST PROBABLE: {most_probable}")
 
     return most_probable
