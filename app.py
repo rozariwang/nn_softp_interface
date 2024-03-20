@@ -65,9 +65,9 @@ liar_sizes = {
 }
 
 cofacts_sizes = {
-    "Train": 5042,  # example value
-    "Test": 631,  # example value
-    "Validation": 629  # example value
+    "Train": 5810,  # example value
+    "Test": 728,  # example value
+    "Validation": 725  # example value
 }
 
 def plot_pie_chart(sizes, title):
@@ -220,9 +220,9 @@ elif st.session_state['current_page'] == "Datasets":
         
         # Cofacts Dataset URLs
         cofacts_datasets = {
-            "Cofacts Train": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/cofacts_dataset/train.csv', None),
-            "Cofacts Test": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/cofacts_dataset/test.csv', None),
-            "Cofacts Validation": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/cofacts_dataset/validation.csv', None)
+            "Cofacts Train": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/cofacts_datasets/train.csv', None),
+            "Cofacts Test": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/cofacts_datasets/test.csv', None),
+            "Cofacts Validation": ('https://raw.githubusercontent.com/rozariwang/nn_softp_interface/main/cofacts_datasets/validation.csv', None)
         }
 
         for name, (url, names) in cofacts_datasets.items():
