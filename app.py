@@ -115,11 +115,12 @@ if 'current_page' in st.session_state and st.session_state['current_page'] == "M
         lm_hidden_size = model.config.hidden_size
         classifier = load_checkpoint(lm_hidden_size, 6)
 
-        most_prob = predict(article_body, tokenizer, classifier, model)
+        most_prob, gradients = predict(article_body, tokenizer, classifier, model)
         if most_prob == 0:
             prediction = "false"
         else:
             prediction = "true"
+
         classification, surprisal_values, words = random_generator.generate_surprisal_values(article_body, threshold)
         #st.session_state['classification_result'] = classification # Store the result in session state
         st.session_state['classification_result'] = prediction
@@ -137,6 +138,7 @@ if 'current_page' in st.session_state and st.session_state['current_page'] == "M
     if st.session_state['classification_result']:
         #st.write(f"Classification: {st.session_state['classification_result']}")
         st.markdown(f"**Classification:** **{st.session_state['classification_result']}**", unsafe_allow_html=True)
+        st.markdown(f"**gradients: **  {gradients}")
         st.markdown(st.session_state['heatmap_html'], unsafe_allow_html=True)
 
      # Collect agreement and feedback
