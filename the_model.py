@@ -19,7 +19,7 @@ from transformers import AutoModel,  AutoTokenizer
 import streamlit as st
 
 
-previous_checkpoint_file = "checkpoint_BERT_FULL_1000_SimpleLinearHead_1710455163.7840276.pth"
+previous_checkpoint_file = "streamlit_BERT_binary_SimpleLinearHead_1710938476.406034/best_checkpoint_streamlit_BERT_binary_SimpleLinearHead_1710938476.406034.pth"
 
 @st.cache_resource  # 👈 Add the caching decorator
 def load_model() -> object:
@@ -82,7 +82,7 @@ def predict(input: str, tokenizer: object, classifier:object, lm:object) -> (flo
     most_probable = classifier_outputs.argmax(dim=1)
 
     #print(f"LABEL PROBS ARE: {label_probs}")
-    print(f"MOST PROBABLE: {most_probable}")
+    #print(f"MOST PROBABLE: {most_probable}")
 
     return most_probable
 

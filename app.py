@@ -115,11 +115,14 @@ if 'current_page' in st.session_state and st.session_state['current_page'] == "M
         lm_hidden_size = model.config.hidden_size
         classifier = load_checkpoint(lm_hidden_size, 6)
 
-        most_prob = predict(article_body,tokenizer, classifier, model)
-        print(f"MOST PROBABLE: {most_prob}")
+        most_prob = predict(article_body, tokenizer, classifier, model)
+        if most_prob == 0:
+            prediction = "false"
+        else:
+            prediction = "true"
         classification, surprisal_values, words = random_generator.generate_surprisal_values(article_body, threshold)
         #st.session_state['classification_result'] = classification # Store the result in session state
-        st.session_state['classification_result'] = most_prob
+        st.session_state['classification_result'] = prediction
 
         normalized_vals = np.interp(surprisal_values, (min(surprisal_values), max(surprisal_values)), (0, 1))
         colors = [cm.Reds(val) for val in normalized_vals]
