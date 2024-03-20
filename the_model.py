@@ -73,6 +73,8 @@ def predict(input: str, tokenizer: object, classifier:object, lm:object) -> (flo
     print(f"the tokenized input is: {tokenized_input}")
     lm_outputs = lm(tokenized_input)
     classifier_outputs = classifier(lm_outputs[0].float())
+    lm_outputs.retain_grad()
+    classifier_outputs.retain_grad()
 
     # These classifier outputs are the logits
     # A call to torch.softmax(classifier_outputs) should do it!
