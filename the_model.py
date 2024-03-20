@@ -84,7 +84,7 @@ def predict(input: str, tokenizer: object, classifier:object, lm:object) -> (flo
     #print(f"LABEL PROBS ARE: {label_probs}")
     #print(f"MOST PROBABLE: {most_probable}")
 
-    gradients = torch.autograd.grad(classifier_outputs.argmax(dim=1), lm_outputs[0], grad_outputs=torch.ones_like(classifier_outputs), retain_graph=True)[0]
+    gradients = torch.autograd.grad(classifier_outputs, lm_outputs, grad_outputs=torch.ones_like(classifier_outputs), retain_graph=True)[0]
 
     return most_probable, gradients
 
