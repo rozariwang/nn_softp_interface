@@ -21,6 +21,8 @@ import streamlit as st
 
 previous_checkpoint_file = "streamlit_BERT_binary_SimpleLinearHead_1710938476.406034/best_checkpoint_streamlit_BERT_binary_SimpleLinearHead_1710938476.406034.pth"
 
+torch.enable_grad()
+
 @st.cache_resource  # 👈 Add the caching decorator
 def load_model() -> object:
     """
