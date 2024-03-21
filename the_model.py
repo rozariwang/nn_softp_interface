@@ -113,18 +113,18 @@ def predict(input: str, tokenizer: object, classifier:object, lm:object) -> (flo
 
 
 def get_saliency_scores(gradient):
-    st.markdown(f"The gradient is: {gradient}")
+    #st.markdown(f"The gradient is: {gradient}")
     saliency_scores = gradient.sum(dim=2)
-    st.markdown(f"The saliency: {saliency_scores}")
-    normal_saliency = saliency_scores.squeeze().tolist()
-    st.markdown(f"The normal saliency: {normal_saliency}")
+    #st.markdown(f"The saliency: {saliency_scores}")
+    #normal_saliency = saliency_scores.squeeze().tolist()
+    #st.markdown(f"The normal saliency: {normal_saliency}")
 
 
     normalized_scores = (saliency_scores - saliency_scores.min()) / (saliency_scores.max() - saliency_scores.min())
 
-    st.markdown(f"The normalized: {normalized_scores}")
+    #st.markdown(f"The normalized: {normalized_scores}")
 
-    normalized_scores.squeeze().tolist()
+    normalized_scores = normalized_scores.squeeze().tolist()
 
     return normalized_scores
 
