@@ -14,7 +14,7 @@ import torch
 import torch.nn as nn
 #from transformers import AutoModel, AutoModelForCausalLM, AutoModelForSequenceClassification, AutoTokenizer, DataCollatorWithPadding, BitsAndBytesConfig
 from transformers import AutoModel, AutoTokenizer
-from the_model import load_model, load_tokenizer, load_checkpoint, predict
+from the_model import load_model, load_tokenizer, load_checkpoint, predict, get_saliency_scores
 
 if 'current_page' not in st.session_state:
     st.session_state['current_page'] = "Main Page"
@@ -105,7 +105,7 @@ if 'current_page' in st.session_state and st.session_state['current_page'] == "M
     article_title = st.text_area("Article Title:", "Enter the article title here...")
     article_body = st.text_area("Article Body:", "Enter the article body here...")
     source_link = st.text_input('Enter the source link of the article:', '')
-    threshold = st.number_input("Set the threshold for classification:", min_value=0.0, max_value=1.0, value=0.5)
+    #threshold = st.number_input("Set the threshold for classification:", min_value=0.0, max_value=1.0, value=0.5)
 
 
 
@@ -113,24 +113,45 @@ if 'current_page' in st.session_state and st.session_state['current_page'] == "M
         tokenizer = load_tokenizer()
         model = load_model()
         lm_hidden_size = model.config.hidden_size
-        classifier = load_checkpoint(lm_hidden_size, 6)
+        classifier = load_checkpoint(lm_hidden_size, 2)
 
-        most_prob, gradients = predict(article_body, tokenizer, classifier, model)
-        if most_prob == 0:
+        logits, gradients = predict(article_body, tokenizer, classifier, model)
+        most_probable = logits.argmax(dim=1).item()
+        if most_probable == 0:
             prediction = "false"
         else:
             prediction = "true"
 
-        classification, surprisal_values, words = random_generator.generate_surprisal_values(article_body, threshold)
+        """
+        def generate_surprisal_values(text, threshold=0.5):
+        words = text.split()
+        surprisal_values = np.random.rand(len(words))
+        surprisal_values = np.insert(surprisal_values, 0, 0)
+        surprisal_values = np.convolve(surprisal_values, np.array([0.5, 0.5]), mode = "valid")
+        classification = "fake news" if np.mean(surprisal_values) > threshold else "true news"
+        return classification, surprisal_values, words
+        """
+        word_as_tokens = []
+        for token_id in tokenizer.encode(article_body):
+            word_as_tokens.append(tokenizer.decode(token_id))
+
+        saliency_scores = get_saliency_scores(gradients)
+
+
+
+
+
+        #classification, surprisal_values, words = random_generator.generate_surprisal_values(article_body, threshold)
         #st.session_state['classification_result'] = classification # Store the result in session state
         st.session_state['classification_result'] = prediction
 
-        normalized_vals = np.interp(surprisal_values, (min(surprisal_values), max(surprisal_values)), (0, 1))
+        #normalized_vals = np.interp(surprisal_values, (min(surprisal_values), max(surprisal_values)), (0, 1))
+        normalized_vals = saliency_scores
         colors = [cm.Reds(val) for val in normalized_vals]
         colors_hex = ["#{:02x}{:02x}{:02x}".format(int(r*255), int(g*255), int(b*255)) for r, g, b, _ in colors]
         heatmap_html = "".join([
             f'<span style="background-color: {colors_hex[i]}; color: {text_color_from_bg(colors[i])}; padding: 5px 10px; margin: 2px; border-radius: 5px; display: inline-block; min-width: 3em; text-align: center;">{word}</span>'
-            for i, word in enumerate(words)
+            for i, word in enumerate(word_as_tokens)
         ])
         st.session_state['heatmap_html'] = heatmap_html
 

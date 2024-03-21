@@ -63,7 +63,7 @@ def load_checkpoint(hidden_size, num_classes) -> object:
 
     return classifier
 
-
+"""
 def predict(input: str, tokenizer: object, classifier:object, lm:object) -> (float, int):
     #classifier.eval()
     #lm.eval()
@@ -83,13 +83,39 @@ def predict(input: str, tokenizer: object, classifier:object, lm:object) -> (flo
     #label_probs = torch.softmax(classifier_outputs)
 
     # to get the single most probable label:
-    most_probable = classifier_outputs.argmax(dim=1)
+    most_probable = classifier_outputs.argmax(dim=1).item()
+
+    classifier_outputs[0][most_probable].backward(retain_graph=True)
+    gradients = lm_outputs[0].grad
 
     #print(f"LABEL PROBS ARE: {label_probs}")
     #print(f"MOST PROBABLE: {most_probable}")
 
-    gradients = torch.autograd.grad(classifier_outputs, lm_outputs, grad_outputs=torch.ones_like(classifier_outputs), retain_graph=True)[0]
+    #gradients = torch.autograd.grad(classifier_outputs, lm_outputs, grad_outputs=torch.ones_like(classifier_outputs), retain_graph=True)[0]
 
     return most_probable, gradients
+"""
 
+
+def predict(input: str, tokenizer: object, classifier:object, lm:object) -> (float, int):
+    print(f"the input is: {input}")
+    tokenized_input = tokenizer.encode(input, return_tensors="pt")
+    print(f"the tokenized input is: {tokenized_input}")
+    lm_outputs = lm(tokenized_input)
+    classifier_outputs = classifier(lm_outputs[0].float())
+    lm_outputs[0].retain_grad()
+    classifier_outputs.retain_grad()
+    most_probable = classifier_outputs.argmax(dim=1).item()
+    classifier_outputs[0][most_probable].backward(retain_graph=True)
+    gradients = lm_outputs[0].grad
+
+    return classifier_outputs, gradients
+
+
+def get_saliency_scores(gradient):
+    saliency_scores = gradient.sum(dim=2)
+
+    normalized_scores = (saliency_scores - saliency_scores.min()) / (saliency_scores.max() - saliency_scores.min())
+
+    return normalized_scores
 
