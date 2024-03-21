@@ -124,5 +124,7 @@ def get_saliency_scores(gradient):
 
     st.markdown(f"The normalized: {normalized_scores}")
 
+    normalized_scores.squeeze().tolist()
+
     return normalized_scores
 
