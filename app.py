@@ -135,6 +135,8 @@ if 'current_page' in st.session_state and st.session_state['current_page'] == "M
         for token_id in tokenizer.encode(article_body):
             word_as_tokens.append(tokenizer.decode(token_id))
 
+        st.markdown(f"most_probable: {most_probable}")
+        st.markdown(f"logits: {logits}")
         st.markdown(f"word_as_tokens is: {word_as_tokens}")
 
         saliency_scores = get_saliency_scores(gradients)
