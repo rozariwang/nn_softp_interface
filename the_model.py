@@ -49,7 +49,7 @@ class SimplestLinearHead(nn.Module):
         logits = self.fc(pooled_output)
         return logits
 
-@st.cache_resource  # 👈 Add the caching decorator
+#@st.cache_resource  # 👈 Add the caching decorator
 def load_checkpoint(hidden_size, num_classes) -> object:
     """
 
