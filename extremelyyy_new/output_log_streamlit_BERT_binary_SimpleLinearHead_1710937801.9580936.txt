@@ -1,0 +1,98 @@
+streamlit_BERT_binary_SimpleLinearHead_1710937801.9580936
+{'LM': 'BERT, together with classifier in 1 NN', 'HUGGINGFACE_IMPLEMENTATION': 'AutoModel', 'CLF_HEAD': 'SimplestLinearHead', 'FREEZE_LM': True, 'BATCH_SIZE': 64, 'NUM_EPOCHS': 300, 'EARLY_STOPPING_AFTER': 'NEVER', 'LEARNING_RATE': 0.0001, 'OPTIMIZER': 'Adam', 'QUANTIZATION': None, 'DATASET': 'Liar', 'DATA_FRAC': 1, 'KEEP_COLUMNS': ['statement', 'label'], 'NUM_CLASSES': 2, 'LABEL_MAPPING': {0: 0, 1: 1, 2: 1, 3: 1, 4: 0, 5: 0}}
+
+Number of epochs trained: 7 took 237.5323748588562s 
+The best validation result was obtained after 4 epochs 
+Checkpoint saved at: streamlit_BERT_binary_SimpleLinearHead_1710937801.9580936/checkpoint_streamlit_BERT_binary_SimpleLinearHead_1710937801.9580936.pthTraining took: 237.5323748588562s in total.
+
+Training Loss: 
+[0.6828431179804831, 0.6725115598358723, 0.6692004703586887, 0.6385102005478758, 0.5765829497242566, 0.4729533937777051, 0.3519828822116674]
+
+Validation Loss: 
+[0.6571163080987477, 0.6796218582562038, 0.6826891530127752, 0.647162241595132, 0.7013974303290957, 0.6992091877119881, 0.8839408982367742]
+
+Training Acc: 
+[0.5613983834842731, 0.5783425844775538, 0.5922679910409971, 0.6390106144707371, 0.7135066705618853, 0.7924822280650502, 0.8634725873989678]
+
+Validation Acc: 
+[0.6152647975077882, 0.5794392523364486, 0.5911214953271028, 0.6300623052959502, 0.6129283489096573, 0.6098130841121495, 0.602803738317757]
+
+
+
+
+ Epoch 0: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+4213 			 4497 			 3654 
+6056 			 5772 			 5213 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+538 			 616 			 322 
+746 			 668 			 452 
+
+ Epoch 1: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+4213 			 4497 			 3654 
+6056 			 5772 			 5213 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+538 			 616 			 322 
+746 			 668 			 452 
+
+ Epoch 2: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+4213 			 4497 			 3654 
+6056 			 5772 			 5213 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+538 			 616 			 322 
+746 			 668 			 452 
+
+ Epoch 3: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+4213 			 4497 			 3654 
+6056 			 5772 			 5213 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+538 			 616 			 322 
+746 			 668 			 452 
+
+ Epoch 4: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+4213 			 4497 			 3654 
+6056 			 5772 			 5213 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+538 			 616 			 322 
+746 			 668 			 452 
+
+ Epoch 5: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+4213 			 4497 			 3654 
+6056 			 5772 			 5213 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+538 			 616 			 322 
+746 			 668 			 452 
+
+ Epoch 6: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+4213 			 4497 			 3654 
+6056 			 5772 			 5213 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+538 			 616 			 322 
+746 			 668 			 452 

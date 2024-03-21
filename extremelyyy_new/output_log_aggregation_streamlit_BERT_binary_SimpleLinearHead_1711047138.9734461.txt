@@ -1,0 +1,2221 @@
+aggregation_streamlit_BERT_binary_SimpleLinearHead_1711047138.9734461
+{'LM': 'BERT', 'HUGGINGFACE_IMPLEMENTATION': 'AutoModel', 'CLF_HEAD': 'SimplestLinearHead', 'FREEZE_LM': True, 'BATCH_SIZE': 32, 'NUM_EPOCHS': 200, 'EARLY_STOPPING_AFTER': 'NEVER', 'LEARNING_RATE': 0.0001, 'OPTIMIZER': 'Adam', 'QUANTIZATION': None, 'DATASET': 'Liar', 'DATA_FRAC': 1, 'KEEP_COLUMNS': ['statement', 'label'], 'NUM_CLASSES': 2, 'LABEL_MAPPING': {0: 0, 1: 0, 2: 1, 3: 1, 4: 0, 5: 0}}
+
+Number of epochs trained: 200 took 806.8402824401855s 
+The best validation result was obtained after 97 epochs 
+Checkpoint saved at: aggregation_streamlit_BERT_binary_SimpleLinearHead_1711047138.9734461/checkpoint_aggregation_streamlit_BERT_binary_SimpleLinearHead_1711047138.9734461.pthTraining took: 806.8402824401855s in total.
+
+Training Loss: 
+[0.6570201868023086, 0.6465778974729164, 0.6395225040266447, 0.6342750382943316, 0.6309976399501908, 0.6278457212670941, 0.6259260758804013, 0.6245782642721016, 0.6230005643263784, 0.6215035034302981, 0.6202539579704914, 0.6198429263826472, 0.6172929295683947, 0.6170281834691485, 0.6176148104333432, 0.6138768587899728, 0.6136139051008076, 0.6125521709985822, 0.61237507928569, 0.6127579523209842, 0.6116442855830505, 0.610062749772057, 0.6094970161855406, 0.6086896998674327, 0.6090835960483254, 0.6081983064565332, 0.6061751265949178, 0.6076767246856868, 0.6071558707971068, 0.60657185455349, 0.6058157315692426, 0.6061259122838113, 0.604555722709014, 0.6043823704912655, 0.6032313123298954, 0.6034621369801578, 0.6029327751320099, 0.6041139569423651, 0.6025106165082283, 0.6022105013655725, 0.6019998259633501, 0.6021008109006555, 0.6017629973984953, 0.6005260103216795, 0.5999790773584835, 0.600196681011503, 0.6005327291206407, 0.6002794252563488, 0.5982285296062814, 0.5996423199355045, 0.5995328781946426, 0.5978685023257294, 0.5981838599172337, 0.5980969364769362, 0.5982742871265174, 0.5977173034461488, 0.5975134675376512, 0.5969441306553898, 0.5980462219299185, 0.5976687091347584, 0.5959018649898957, 0.5966500831170245, 0.5952632648179835, 0.5960085871063661, 0.5961994523199919, 0.5951164738040104, 0.5959132375932557, 0.5973336955654287, 0.5954442956365901, 0.5944895781460581, 0.5960497339937917, 0.5947604333500253, 0.5945166353124696, 0.5935429851771143, 0.5932896807557697, 0.5937903874388365, 0.5944027614742053, 0.5937019472367295, 0.5929735088459799, 0.594636962978268, 0.5935456713783407, 0.5928588259814312, 0.5925887114719438, 0.5924816541953993, 0.5922021650450995, 0.5931052522867268, 0.5924226903469763, 0.5920468860326155, 0.5922229848918142, 0.5921549530601204, 0.5903820289629642, 0.5913528686743288, 0.5907904600428644, 0.5902814788981762, 0.5903604158731265, 0.5915542536435469, 0.5905097848344072, 0.5904670567527367, 0.5913636078158643, 0.5903173406547475, 0.5902670213366594, 0.590433485968462, 0.5904065932254554, 0.5896535903865303, 0.5901521276276431, 0.5896453770150277, 0.5901250568134391, 0.5894734382258026, 0.5895516892831274, 0.5896781954067147, 0.5901445112310094, 0.5882319363292504, 0.5897568680601328, 0.5882494341918613, 0.5880878643826161, 0.5888254390884411, 0.5883119187993795, 0.5885303109605736, 0.5882116226578056, 0.5888093752653056, 0.5886949862460853, 0.5888045133088609, 0.588060603891949, 0.5881502015568386, 0.5889794062416873, 0.5886737168577972, 0.5879493093936243, 0.5880266921913884, 0.5886011108802487, 0.5873630960411, 0.5866249587119925, 0.5864190291207156, 0.5863692286972687, 0.5878474358643326, 0.5872905944181008, 0.5877165447143008, 0.5878925971524366, 0.5866190619372134, 0.5875212032104207, 0.5874886346568943, 0.5862079836497797, 0.5869776578707115, 0.585984268478144, 0.5858866016255733, 0.5862779793709609, 0.5870536682761718, 0.5874307506552366, 0.5862593749230525, 0.5855362669701145, 0.5867087836391829, 0.586487199380019, 0.586191334457041, 0.5866844736712744, 0.5859864111815658, 0.5866958990089619, 0.5854062027648973, 0.5862108790243155, 0.586027196913122, 0.585807920709206, 0.5858520660259271, 0.5856623670950857, 0.5853451773570706, 0.5857560331019286, 0.58509215786821, 0.5861495270907322, 0.5846733340407457, 0.5853173781963895, 0.584854440711369, 0.585477103511121, 0.5854787291767442, 0.5844162110227662, 0.5847806052255482, 0.5850464728576743, 0.5850786075599468, 0.586080821225205, 0.5845738550027212, 0.5854259611475876, 0.5846463862423584, 0.5851701180511546, 0.5849083864428916, 0.5846731088057485, 0.5848686167755602, 0.5850514680425697, 0.5861276897871606, 0.5850110741047845, 0.5844520005481637, 0.5843860307400843, 0.5848592055549503, 0.5849043360194685, 0.583766534785244, 0.5843740375799553, 0.5851485239939527, 0.5842191321641856, 0.5828776809842415, 0.5838891342978612, 0.5833111780454808, 0.5849451364200806, 0.5849982851947951, 0.5833349949288591, 0.5827102181139022]
+
+Validation Loss: 
+[0.6346266894805722, 0.6222993411668917, 0.6183631463748652, 0.6174504495248562, 0.614976645969763, 0.60629332647091, 0.6000896823115465, 0.6034932616280346, 0.5985985172957908, 0.6021473800263754, 0.6004528883026867, 0.5932016474444691, 0.6018656971977978, 0.5974295110237308, 0.5917398609766146, 0.5986499473816012, 0.5877508223056793, 0.5994358716941461, 0.5873584899960494, 0.5931303108610758, 0.5886949162657668, 0.5856776528242158, 0.6065335666261068, 0.595163551772513, 0.5953525144879411, 0.5914727921892957, 0.5851606319590312, 0.6102746143573667, 0.5919965236652188, 0.5879891114990886, 0.5931603065351161, 0.5906395163477921, 0.5934903716168752, 0.5888106081543899, 0.5919574179300447, 0.6025070926038231, 0.5856924093351131, 0.5866647479010791, 0.587241769563861, 0.6004378330416795, 0.5821950973534002, 0.589919322147602, 0.5828422075364648, 0.5942572384345822, 0.5859722531423336, 0.5848826068203624, 0.5927509919899266, 0.5888602013995008, 0.5842758606119853, 0.5861620103440633, 0.5838214318926741, 0.5844438766560903, 0.5862291099094763, 0.5891893927643939, 0.5889633283382509, 0.5834491718106154, 0.5874523098875837, 0.5879355167470327, 0.5809206112128932, 0.5783786039526869, 0.5829830467700958, 0.5931147598638767, 0.5876698392193492, 0.5975685708406495, 0.5790248876664696, 0.5876713991165161, 0.5795899084428462, 0.5789882664273425, 0.580513637967226, 0.5829370167197251, 0.5841343955295842, 0.5919738746270901, 0.5819923746876601, 0.5838480221062172, 0.5861905798679445, 0.5927490366668235, 0.5895209406934133, 0.5827002997805433, 0.5818717370672923, 0.5916052431595035, 0.5854942122610604, 0.6024684324497129, 0.587958681147273, 0.5868827533431169, 0.5887295632827573, 0.5876780210471735, 0.5803085601911312, 0.5896741558865803, 0.5914748092977012, 0.5929410290427324, 0.5795651143643914, 0.5862756008055152, 0.5872042135494512, 0.5876293756612917, 0.5897430901120349, 0.5811522450388932, 0.5877257570987795, 0.5913028520781819, 0.5800183204615988, 0.5845948741203402, 0.5813112324330865, 0.5844134681108522, 0.5872048510283958, 0.588508443134587, 0.5856566647203957, 0.5821401026190781, 0.5764343665867318, 0.5842679339211162, 0.5897166111120363, 0.595240641657899, 0.5940380350845617, 0.5834325442953807, 0.5848274005622398, 0.5870479316246219, 0.591729264433791, 0.5829073437830297, 0.5832105322581965, 0.583097872210712, 0.5806862995391939, 0.5889817221862513, 0.5888359364939899, 0.5834708308301321, 0.5880293591720301, 0.5828524166490974, 0.5780345223298887, 0.5931649833190732, 0.5810898048121754, 0.6064942915265154, 0.5916999404023333, 0.5879519458224134, 0.5878656404774364, 0.5936816334724426, 0.5851622013057151, 0.5894400273881307, 0.6024833081698999, 0.5824107004374992, 0.5821915036294518, 0.5912073872438292, 0.5856406092643738, 0.593516766298108, 0.588164136177156, 0.5928449565317573, 0.595432154289106, 0.5824795975917723, 0.5847641825675964, 0.5902794345123011, 0.5860114373811861, 0.5801706488539533, 0.5863340358908583, 0.5863982497192011, 0.5934928197686266, 0.5909634101681593, 0.5806081949210748, 0.5917803405261621, 0.5833528659692625, 0.58969844768687, 0.5824651056673469, 0.5933087497222714, 0.5874625313572768, 0.5791799008119397, 0.5929455408235875, 0.5862276394192766, 0.584930964359423, 0.5885894233133735, 0.5869938665773811, 0.5911677436130803, 0.588690822444311, 0.5894700346923456, 0.6021230191719241, 0.5798529670005892, 0.5842502604170543, 0.5896003980462144, 0.6069964628394057, 0.596664755082712, 0.5855427173579612, 0.6080849330599715, 0.5820726512408838, 0.5833890699758763, 0.5923762190632704, 0.5840698342497755, 0.600763012723225, 0.5928762220754856, 0.5832955917207207, 0.5907239928478147, 0.5888788707372619, 0.5921860104653893, 0.5837393294020397, 0.5927774019357634, 0.5800778807663336, 0.5900331662922371, 0.5911108378956957, 0.5798839330673218, 0.5959861612901455, 0.5935085553948473, 0.5936993055227326, 0.5863759488594241, 0.5962982904620286, 0.5873929371194142, 0.590185779623869, 0.5896851071497289]
+
+Training Acc: 
+[0.6431005940208394, 0.6417372675041386, 0.6474827149673775, 0.6490408024150356, 0.6524491187067875, 0.6524491187067875, 0.6553705326711462, 0.6537150647580096, 0.6568312396533256, 0.6570260005842828, 0.659557892686727, 0.6573181419807187, 0.661115980134385, 0.6608238387379491, 0.6624793066510858, 0.664232155029701, 0.6667640471321453, 0.6651085792190087, 0.6679326127178888, 0.6659850034083163, 0.6654981010809232, 0.6690037978381537, 0.6670561885285812, 0.6706592657512903, 0.6668614275976239, 0.6724121141299055, 0.6710487876132047, 0.6713409290096407, 0.6691985587691109, 0.6728016359918201, 0.6727042555263414, 0.6696854610965041, 0.6713409290096407, 0.672022592267991, 0.6715356899405979, 0.6748466257668712, 0.6746518648359139, 0.6739702015775635, 0.6757230499561788, 0.6733859187846918, 0.6755282890252216, 0.6696854610965041, 0.6770863764728795, 0.6772811374038368, 0.6749440062323497, 0.6765020936800078, 0.6740675820430422, 0.6775732788002726, 0.6778654201967086, 0.6785470834550589, 0.6760151913526147, 0.6796182685753238, 0.677475898334794, 0.6802025513681955, 0.6769889960074009, 0.6748466257668712, 0.6800077904372382, 0.6794235076443665, 0.6802025513681955, 0.6781575615931444, 0.6820527802122894, 0.6838056285909047, 0.6788392248514948, 0.6809815950920245, 0.679033985782452, 0.6812737364884605, 0.6794235076443665, 0.6784497029895803, 0.6801051709027169, 0.6800077904372382, 0.6801051709027169, 0.6838056285909047, 0.6814684974194176, 0.6820527802122894, 0.6824423020742039, 0.681371116953939, 0.6836108676599474, 0.6835134871944688, 0.6838056285909047, 0.6806894536955886, 0.6818580192813322, 0.6787418443860161, 0.682150160677768, 0.6789366053169734, 0.6814684974194176, 0.6814684974194176, 0.6808842146265459, 0.6859479988314344, 0.6846820527802123, 0.683221345798033, 0.6817606388158536, 0.6841951504528192, 0.6853637160385626, 0.6840003895218619, 0.6848768137111695, 0.6841951504528192, 0.6847794332456909, 0.6853637160385626, 0.6817606388158536, 0.6851689551076054, 0.6862401402278703, 0.6841951504528192, 0.6836108676599474, 0.6841951504528192, 0.6851689551076054, 0.6850715746421268, 0.6842925309182978, 0.6871165644171779, 0.6857532379004772, 0.686045379296913, 0.686045379296913, 0.6862401402278703, 0.6843899113837764, 0.6896484565196221, 0.6858506183659558, 0.6874087058136138, 0.6875060862790924, 0.6867270425552634, 0.6864349011588275, 0.6873113253481352, 0.6869218034862207, 0.6841951504528192, 0.6856558574349986, 0.684487291849255, 0.6856558574349986, 0.6867270425552634, 0.6881877495374428, 0.6866296620897848, 0.6857532379004772, 0.6874087058136138, 0.6877008472100496, 0.6895510760541436, 0.6889667932612717, 0.6845846723147336, 0.6909144025708442, 0.6895510760541436, 0.6843899113837764, 0.6866296620897848, 0.6872139448826565, 0.6896484565196221, 0.6888694127957932, 0.6894536955886649, 0.6866296620897848, 0.6885772713993573, 0.6882851300029215, 0.689940597916058, 0.6884798909338786, 0.6885772713993573, 0.6939331970006817, 0.6918882072256305, 0.6898432174505794, 0.6868244230207421, 0.6900379783815367, 0.6912065439672802, 0.6882851300029215, 0.689161554192229, 0.6900379783815367, 0.6892589346577077, 0.6898432174505794, 0.6897458369851008, 0.692277729087545, 0.6893563151231863, 0.6881877495374428, 0.6921803486220665, 0.6893563151231863, 0.6927646314149382, 0.6911091635018015, 0.6921803486220665, 0.6901353588470153, 0.6923751095530236, 0.6914986853637161, 0.689940597916058, 0.6917908267601519, 0.6874087058136138, 0.6892589346577077, 0.6874087058136138, 0.6898432174505794, 0.6886746518648359, 0.6931541532768527, 0.6914986853637161, 0.6909144025708442, 0.692277729087545, 0.6893563151231863, 0.6864349011588275, 0.6890641737267504, 0.6955886649138183, 0.6901353588470153, 0.6915960658291946, 0.6909144025708442, 0.6919855876911092, 0.6905248807089298, 0.6906222611744084, 0.6926672509494596, 0.6943227188625961, 0.6897458369851008, 0.6939331970006817, 0.6904275002434511, 0.6907196416398871, 0.6926672509494596, 0.6907196416398871]
+
+Validation Acc: 
+[0.6728971962616822, 0.6806853582554517, 0.6752336448598131, 0.6822429906542056, 0.6814641744548287, 0.6853582554517134, 0.6876947040498442, 0.6845794392523364, 0.6853582554517134, 0.6931464174454829, 0.6993769470404985, 0.6845794392523364, 0.67601246105919, 0.6892523364485982, 0.6876947040498442, 0.6806853582554517, 0.6939252336448598, 0.6985981308411215, 0.6947040498442367, 0.6939252336448598, 0.7009345794392523, 0.6978193146417445, 0.6838006230529595, 0.6985981308411215, 0.6884735202492211, 0.6931464174454829, 0.6978193146417445, 0.6744548286604362, 0.6962616822429907, 0.6970404984423676, 0.6931464174454829, 0.6931464174454829, 0.7017133956386293, 0.7001557632398754, 0.6915887850467289, 0.6791277258566978, 0.6993769470404985, 0.6962616822429907, 0.6985981308411215, 0.6876947040498442, 0.6947040498442367, 0.6954828660436138, 0.6970404984423676, 0.6954828660436138, 0.7032710280373832, 0.6978193146417445, 0.6962616822429907, 0.692367601246106, 0.6939252336448598, 0.7024922118380063, 0.6978193146417445, 0.6954828660436138, 0.6978193146417445, 0.6970404984423676, 0.6947040498442367, 0.705607476635514, 0.705607476635514, 0.6939252336448598, 0.7001557632398754, 0.7001557632398754, 0.706386292834891, 0.7009345794392523, 0.7001557632398754, 0.6838006230529595, 0.6993769470404985, 0.6947040498442367, 0.6978193146417445, 0.7040498442367601, 0.705607476635514, 0.6970404984423676, 0.6884735202492211, 0.6869158878504673, 0.6939252336448598, 0.6993769470404985, 0.6845794392523364, 0.6869158878504673, 0.7009345794392523, 0.6931464174454829, 0.7024922118380063, 0.6892523364485982, 0.7040498442367601, 0.6853582554517134, 0.6876947040498442, 0.706386292834891, 0.7017133956386293, 0.6970404984423676, 0.7001557632398754, 0.676791277258567, 0.6830218068535826, 0.7017133956386293, 0.7032710280373832, 0.6814641744548287, 0.6978193146417445, 0.6876947040498442, 0.6892523364485982, 0.6993769470404985, 0.706386292834891, 0.6915887850467289, 0.6993769470404985, 0.6993769470404985, 0.7001557632398754, 0.7040498442367601, 0.7001557632398754, 0.690809968847352, 0.7040498442367601, 0.6962616822429907, 0.7040498442367601, 0.7001557632398754, 0.6876947040498442, 0.6970404984423676, 0.6900311526479751, 0.6947040498442367, 0.6985981308411215, 0.6915887850467289, 0.6931464174454829, 0.6985981308411215, 0.6962616822429907, 0.6978193146417445, 0.6978193146417445, 0.6985981308411215, 0.7009345794392523, 0.6978193146417445, 0.6939252336448598, 0.7017133956386293, 0.6993769470404985, 0.7040498442367601, 0.6978193146417445, 0.6728971962616822, 0.6970404984423676, 0.7009345794392523, 0.7001557632398754, 0.6884735202492211, 0.6947040498442367, 0.6939252336448598, 0.6713395638629284, 0.6978193146417445, 0.6970404984423676, 0.6853582554517134, 0.7001557632398754, 0.692367601246106, 0.6985981308411215, 0.7001557632398754, 0.692367601246106, 0.6947040498442367, 0.6931464174454829, 0.6931464174454829, 0.6830218068535826, 0.7009345794392523, 0.7017133956386293, 0.6978193146417445, 0.692367601246106, 0.6900311526479751, 0.6970404984423676, 0.6915887850467289, 0.6884735202492211, 0.690809968847352, 0.6939252336448598, 0.6830218068535826, 0.6978193146417445, 0.692367601246106, 0.6876947040498442, 0.6962616822429907, 0.6939252336448598, 0.6884735202492211, 0.6947040498442367, 0.7017133956386293, 0.6939252336448598, 0.6985981308411215, 0.6643302180685359, 0.6993769470404985, 0.6931464174454829, 0.6830218068535826, 0.6799065420560748, 0.6744548286604362, 0.6947040498442367, 0.6612149532710281, 0.6939252336448598, 0.6931464174454829, 0.6978193146417445, 0.690809968847352, 0.6892523364485982, 0.7017133956386293, 0.6962616822429907, 0.6814641744548287, 0.6876947040498442, 0.6799065420560748, 0.690809968847352, 0.6876947040498442, 0.6962616822429907, 0.6931464174454829, 0.692367601246106, 0.7001557632398754, 0.6954828660436138, 0.6954828660436138, 0.6830218068535826, 0.6939252336448598, 0.6697819314641744, 0.7009345794392523, 0.6939252336448598, 0.6752336448598131]
+
+
+
+
+ Epoch 0: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 1: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 2: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 3: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 4: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 5: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 6: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 7: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 8: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 9: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 10: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 11: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 12: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 13: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 14: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 15: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 16: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 17: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 18: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 19: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 20: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 21: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 22: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 23: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 24: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 25: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 26: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 27: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 28: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 29: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 30: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 31: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 32: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 33: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 34: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 35: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 36: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 37: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 38: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 39: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 40: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 41: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 42: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 43: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 44: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 45: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 46: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 47: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 48: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 49: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 50: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 51: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 52: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 53: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 54: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 55: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 56: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 57: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 58: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 59: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 60: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 61: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 62: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 63: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 64: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 65: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 66: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 67: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 68: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 69: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 70: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 71: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 72: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 73: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 74: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 75: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 76: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 77: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 78: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 79: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 80: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 81: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 82: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 83: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 84: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 85: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 86: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 87: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 88: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 89: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 90: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 91: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 92: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 93: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 94: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 95: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 96: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 97: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 98: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 99: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 100: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 101: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 102: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 103: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 104: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 105: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 106: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 107: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 108: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 109: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 110: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 111: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 112: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 113: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 114: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 115: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 116: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 117: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 118: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 119: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 120: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 121: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 122: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 123: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 124: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 125: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 126: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 127: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 128: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 129: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 130: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 131: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 132: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 133: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 134: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 135: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 136: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 137: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 138: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 139: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 140: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 141: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 142: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 143: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 144: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 145: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 146: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 147: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 148: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 149: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 150: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 151: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 152: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 153: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 154: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 155: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 156: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 157: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 158: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 159: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 160: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 161: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 162: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 163: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 164: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 165: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 166: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 167: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 168: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 169: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 170: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 171: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 172: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 173: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 174: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 175: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 176: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 177: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 178: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 179: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 180: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 181: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 182: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 183: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 184: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 185: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 186: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 187: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 188: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 189: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 190: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 191: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 192: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 193: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 194: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 195: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 196: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 197: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 198: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
+
+ Epoch 199: 
+Training 
+Labels predicted: 	 True targets: 	 Correct labels: 
+8276 			 6620 			 5860 
+1993 			 3649 			 1233 
+
+ Validation 
+Labels predicted: 	 True targets: 	 Correct labels: 
+937 			 864 			 692 
+347 			 420 			 175 
