@@ -122,23 +122,23 @@ if 'current_page' in st.session_state and st.session_state['current_page'] == "M
         else:
             prediction = "true"
 
-        """
-        def generate_surprisal_values(text, threshold=0.5):
-        words = text.split()
-        surprisal_values = np.random.rand(len(words))
-        surprisal_values = np.insert(surprisal_values, 0, 0)
-        surprisal_values = np.convolve(surprisal_values, np.array([0.5, 0.5]), mode = "valid")
-        classification = "fake news" if np.mean(surprisal_values) > threshold else "true news"
-        return classification, surprisal_values, words
-        """
+        #"""
+        #def generate_surprisal_values(text, threshold=0.5):
+        #words = text.split()
+        #surprisal_values = np.random.rand(len(words))
+        #surprisal_values = np.insert(surprisal_values, 0, 0)
+        #surprisal_values = np.convolve(surprisal_values, np.array([0.5, 0.5]), mode = "valid")
+        #classification = "fake news" if np.mean(surprisal_values) > threshold else "true news"
+        #return classification, surprisal_values, words
+        #"""
         word_as_tokens = []
         for token_id in tokenizer.encode(article_body):
             word_as_tokens.append(tokenizer.decode(token_id))
 
-        st.markdown(f"most_probable: {most_probable}")
-        st.markdown(f"logits: {logits}")
-        st.markdown(f"word_as_tokens is: {word_as_tokens}")
-        st.markdown(f"gradients: {gradients}")
+        #st.markdown(f"most_probable: {most_probable}")
+        #st.markdown(f"logits: {logits}")
+        #st.markdown(f"word_as_tokens is: {word_as_tokens}")
+        #st.markdown(f"gradients: {gradients}")
 
         saliency_scores = get_saliency_scores(gradients)
 
@@ -152,7 +152,7 @@ if 'current_page' in st.session_state and st.session_state['current_page'] == "M
 
         #normalized_vals = np.interp(surprisal_values, (min(surprisal_values), max(surprisal_values)), (0, 1))
         normalized_vals = saliency_scores
-        st.markdown(f"normalized vals: {normalized_vals}")
+        #st.markdown(f"normalized vals: {normalized_vals}")
         colors = [cm.Reds(val) for val in normalized_vals]
         colors_hex = ["#{:02x}{:02x}{:02x}".format(int(r*255), int(g*255), int(b*255)) for r, g, b, _ in colors]
         heatmap_html = "".join([
@@ -165,7 +165,7 @@ if 'current_page' in st.session_state and st.session_state['current_page'] == "M
     if st.session_state['classification_result']:
         #st.write(f"Classification: {st.session_state['classification_result']}")
         st.markdown(f"**Classification:** **{st.session_state['classification_result']}**", unsafe_allow_html=True)
-        st.markdown(f"**gradients: **  {gradients}")
+        #st.markdown(f"**gradients: **  {gradients}")
         st.markdown(st.session_state['heatmap_html'], unsafe_allow_html=True)
 
      # Collect agreement and feedback
