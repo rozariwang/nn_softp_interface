@@ -147,6 +147,7 @@ if 'current_page' in st.session_state and st.session_state['current_page'] == "M
 
         #normalized_vals = np.interp(surprisal_values, (min(surprisal_values), max(surprisal_values)), (0, 1))
         normalized_vals = saliency_scores
+        st.markdown(f"normalized vals: {normalized_vals}")
         colors = [cm.Reds(val) for val in normalized_vals]
         colors_hex = ["#{:02x}{:02x}{:02x}".format(int(r*255), int(g*255), int(b*255)) for r, g, b, _ in colors]
         heatmap_html = "".join([
