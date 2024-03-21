@@ -138,6 +138,7 @@ if 'current_page' in st.session_state and st.session_state['current_page'] == "M
         st.markdown(f"most_probable: {most_probable}")
         st.markdown(f"logits: {logits}")
         st.markdown(f"word_as_tokens is: {word_as_tokens}")
+        st.markdown(f"gradients: {gradients}")
 
         saliency_scores = get_saliency_scores(gradients)
 
