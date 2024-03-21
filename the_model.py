@@ -45,7 +45,7 @@ class SimplestLinearHead(nn.Module):
         self.fc = nn.Linear(lm_output_size, num_classes)
 
     def forward(self, lm_hidden_states):
-        pooled_output = torch.mas(lm_hidden_states, dim=1)[0]
+        pooled_output = torch.max(lm_hidden_states, dim=1)[0]
         logits = self.fc(pooled_output)
         return logits
 
